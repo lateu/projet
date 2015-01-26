@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="Template.xhtml">
+
+        <ui:define name="body" >
+
+            <h:form id="statForm">
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:panel style="margin-left: 30%;margin-right: 30%; background-color: #ffffff; margin-top: 2%">
+                    <p:panelGrid  columns="2">
+
+                        <h:outputText value="Mot de passe actuel: " />  
+                        <p:password id="feedback1" value="#{utilisateurbean.pass}" feedback="true"/>
+
+                        <h:outputText value="Nouveau mot de passe: " />  
+                        <p:password id="feedback2" value="#{utilisateurbean.pass1}" feedback="true"/>
+
+                        <h:outputText value="Rettapez le nouveau mot de passe: " />  
+                        <p:password id="feedback3" value="#{utilisateurbean.pass2}" feedback="true"/>
+
+                        <p:commandButton id="viewButton1" actionListener="#{utilisateurbean.localize}" update="growl"  value="#{msg.Create}" style="margin-top: 0%"  />
+
+                    </p:panelGrid>
+                </p:panel>
+
+
+            </h:form>
+
+
+
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>

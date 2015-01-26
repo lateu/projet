@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurDeleteDlg" widgetVar="UtilisateurDeleteDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditUtilisateurTitle}">
+
+            <h:form id="UtilisateurDeleteForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{utilisateurbean.utilisateurSelect != null}">
+                        
+                        <h:outputLabel value="Motif"  />
+                        <p:inputTextarea rows="4" cols="30" value="#{utilisateurbean.motifSuppression}" required="True" requiredMessage="le motif de suppression est obligatoire "/>
+                         <p:panel visible="false">
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{utilisateurbean.utilisateurSelect.id}" />
+                            
+                        <p:outputLabel value="{msg.username}" for="username" />
+                        <p:inputText id="username" value="#{utilisateurbean.utilisateurSelect.username}"/>
+                        </p:panel>
+                    </p:panelGrid>                                                                    
+                    <p:commandButton actionListener="#{utilisateurbean.delete}" value="#{msg.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UtilisateurDeleteDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="UtilisateurDeleteDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

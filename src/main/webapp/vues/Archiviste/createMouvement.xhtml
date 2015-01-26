@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <ui:composition template="Template.xhtml">
+        <ui:define name="body" >
+            <p:panel style="margin-left: 18%;margin-right: 18%;margin-top: 2%" header="Dossiers sorties des archives">
+            <h:form id="MouvementListForm1">
+
+              
+                    <p:dataTable id="datalist" value="#{mouvementbean.mouvements}" var="item"
+                               
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30"
+                                 >
+
+                        <p:column sortBy="#{item.archive.compte}" filterBy="#{item.archive.compte}">
+                            <f:facet name="header">
+                                <h:outputText value="N°Compte"/>
+                            </f:facet>
+                            <h:outputText value="#{item.archive.compte}"/>
+                        </p:column>
+
+                        <p:column sortBy="#{item.archive.client}" filterBy="#{item.archive.client}">
+                            <f:facet name="header">
+                                <h:outputText value="Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.archive.client}"/>
+                        </p:column>
+
+                        <p:column sortBy="#{item.archive.typeDocument}" filterBy="#{item.archive.typeDocument}">
+                            <f:facet name="header">
+                                <h:outputText value="TypeDocument"/>
+                            </f:facet>
+                            <h:outputText value="#{item.archive.typeDocument}"/>
+                        </p:column>
+
+                        
+                        
+                        <p:column sortBy="#{item.dateMovement}" filterBy="#{item.dateMovement}">
+                            <f:facet name="header">
+                                <h:outputText value="dateMouvement"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateMovement}">
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column sortBy="#{item.service.nom}" filterBy="#{item.service.nom}">
+                            <f:facet name="header">
+                                <h:outputText value="Service"/>
+                            </f:facet>
+                            <h:outputText value="#{item.service.nom}"/>
+                        </p:column>
+                        
+                        
+                        <p:column sortBy="#{item.utilisateur.nom}" filterBy="#{item.utilisateur.nom}">
+                            <f:facet name="header">
+                                <h:outputText value="Personnel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.utilisateur.nom}"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+
+
+          
+
+            </h:form>
+</p:panel>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

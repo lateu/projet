@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="UtilisateurListForm">
+
+        <p:panel header="liste des utilisateurs" style="margin-left: 10%;margin-right: 10%;margin-top: 2%">
+
+            <p:dataTable id="datalist" value="#{utilisateurbean.utilisateurs}" var="item"
+                         selectionMode="single" selection="#{utilisateurbean.utilisateurSelect}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="15"
+                         rowsPerPageTemplate="15,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                 <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="nom"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+
+               
+                <p:column sortBy="#{item.username}" filterBy="#{item.username}">
+                    <f:facet name="header">
+                        <h:outputText value="username"/>
+                    </f:facet>
+                    <h:outputText value="#{item.username}"/>
+                </p:column>
+                
+                   <p:column sortBy="#{item.service.nom}" filterBy="#{item.service.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="service"/>
+                    </f:facet>
+                    <h:outputText value="#{item.service.nom}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.accountState}" filterBy="#{item.accountState}">
+                    <f:facet name="header">
+                        <h:outputText value="accountState"/>
+                    </f:facet>
+                    <h:outputText value="#{item.accountState}"/>
+                </p:column>
+                <p:column sortBy="#{item.service.agence.code}" filterBy="#{item.service.agence.code}">
+                    <f:facet name="header">
+                        <h:outputText value="Agence"/>
+                    </f:facet>
+                    <h:outputText value="#{item.service.agence.code}"/>
+                </p:column>
+               
+             
+<!--                
+                <p:panel visible="false">
+                    <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="id"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                </p:panel> 
+                -->
+                
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{msg.Create}"  oncomplete="UtilisateurCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{msg.View}" update=":UtilisateurViewForm" oncomplete="UtilisateurViewDialog.show()" disabled="#{empty utilisateurbean.utilisateurSelect}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{msg.Edit}" update=":UtilisateurEditForm:display" oncomplete="UtilisateurEditDialog.show()" disabled="#{empty utilisateurbean.utilisateurSelect}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{msg.Delete}"  oncomplete="UtilisateurDeleteDialog.show()"  update=":UtilisateurDeleteForm:display" disabled="true"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

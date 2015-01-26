@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServiceEditDlg" widgetVar="ServiceEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditServiceTitle}">
+
+            <h:form id="ServiceEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{servicebean.serviceselect != null}">
+
+                        <p:outputLabel value="chef" for="chef" />
+                        <p:inputText id="chef" value="#{servicebean.serviceselect.chef}" title="#{myBundle.EditServiceTitle_chef}" />
+
+                        <p:outputLabel value="nom" for="nom" />
+                        <p:inputText id="nom" value="#{servicebean.serviceselect.nom}" title="#{myBundle.EditServiceTitle_nom}" />
+
+                        <p:panel visible="false">   
+
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{servicebean.serviceselect.id}" />
+
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{servicebean.updateService}" value="#{msg.Save}" update="display,:ServiceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ServiceEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="ServiceEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

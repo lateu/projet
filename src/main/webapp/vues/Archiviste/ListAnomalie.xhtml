@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AnomalieListForm">
+
+        <p:panel header="Liste des Dossiers en Anomalie" style="margin-left: 18%;margin-right: 18%;margin-top: 2%">
+
+            <p:dataTable id="datalist" value="#{dossierCreatinbean.anomalies}" var="item"
+                         selectionMode="single" selection="#{dossierCreatinbean.anomalieSelect}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         rowStyleClass="#{dossierCreatinbean.testAnomalie(item)}"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+
+                <p:column sortBy="#{item.dossier.client}" filterBy="#{item.dossier.client}">
+                    <f:facet name="header">
+                        <h:outputText value="Client"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dossier.client}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dossier.compte}" filterBy="#{item.dossier.compte}">
+                    <f:facet name="header">
+                        <h:outputText value="compte"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dossier.compte}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.motif}" filterBy="#{item.motif}">
+                    <f:facet name="header">
+                        <h:outputText value="Anomalie"/>
+                    </f:facet>
+                    <h:outputText value="#{item.motif}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.personneInit}" filterBy="#{item.personneInit}">
+                    <f:facet name="header">
+                        <h:outputText value="Auteur"/>
+                    </f:facet>
+                    <h:outputText value="#{item.personneInit}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.solution}" filterBy="#{item.solution}">
+                    <f:facet name="header">
+                        <h:outputText value="Solution"/>
+                    </f:facet>
+                    <h:outputText value="#{item.solution}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.personneCor}" filterBy="#{item.personneCor}">
+                    <f:facet name="header">
+                        <h:outputText value="Correcteur"/>
+                    </f:facet>
+                    <h:outputText value="#{item.personneCor}"/>
+                </p:column>
+
+                <p:panel visible="false">
+
+                    <p:column sortBy="#{item.dateOp}" filterBy="#{item.dateOp}">
+                        <f:facet name="header">
+                            <h:outputText value="dateIntroduction"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateOp}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column sortBy="#{item.dateCo}" filterBy="#{item.dateCo}">
+                        <f:facet name="header">
+                            <h:outputText value="Le"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateCo}"/>
+                    </p:column>
+
+
+
+                </p:panel>
+
+
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{msg.Create}" update=":AnomalieCreateForm" oncomplete="AnomalieCreateDialog.show()" disabled="true"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{msg.View}" update=":AnomalieViewForm" oncomplete="AnomalieViewDialog.show()" disabled="#{empty dossierCreatinbean.anomalieSelect}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="correctif" update=":AnomalieEditForm:display" oncomplete="AnomalieEditDialog.show()" disabled="#{empty dossierCreatinbean.anomalieSelect}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{msg.Delete}" actionListener="{anomalieController.delete}" update=":growl,datalist" disabled="true"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

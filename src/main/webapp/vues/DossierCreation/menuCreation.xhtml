@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{changeLocale.locale}">
+        <ui:composition>
+            <table  align="right" class="degrade"  bgcolor=" #AFAFAF" width="100%"  >
+
+                <tr>
+                    <td width="15%"> <img src="../../images/logo.PNG"  width="180" height="80" alt="logo" /></td> 
+                    <td width="65%">
+                        <h:form id="menuForm">
+                            <p:menubar style="height: 25px; margin-left: 32%;margin-right: 32%; border-radius: 20px;font-size: 120px">  
+                                <p:menuitem value="#{msg['welcome.welcome']}" url="#" icon="ui-icon-home" style="font-size: 18px;margin-left: 12px"/>
+
+                                <p:menuitem value="Control" url="/vues/DossierCreation/indexDossier.xhtml"  style="font-size: 18px"/> 
+                                <p:menuitem value="Anomalie" styleClass="#{dossierCreatinbean.AnomalieWarning()}" url="/vues/DossierCreation/indexAnomalie.xhtml"  style="font-size: 18px"/> 
+
+                           
+                            </p:menubar>  
+
+                        </h:form>
+                    </td>
+                    <td width="25%">
+                        <h:form id="formulaire">
+                            <h:panelGrid columns="3" style="height: 50px; margin-left: 2%;  " >
+                                <h:commandLink value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" style="background-color: chartreuse;font-size: 15px"/>
+                                <h:commandLink value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" style="background-color: chartreuse;font-size: 15px"/>
+                                <p:menubar style=" margin-left: 15%;width: 100px;height: 18px">  
+
+                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" />
+                                    <p:menuitem  value="Personnalise" url="/vues/DossierCreation/Personalise.xhtml" style=" font-size: 15px;background-color: aqua" />
+
+                                </p:menubar> 
+                            </h:panelGrid>
+
+                            <h:outputLabel value="connecté:   #{loginController.conncte}"  style="margin-left: 55%;margin-right: 5%;font-weight: bold"/>  
+                        </h:form>
+
+                    </td>
+                </tr>
+            </table>
+        </ui:composition>
+    </f:view>
+</html>
+

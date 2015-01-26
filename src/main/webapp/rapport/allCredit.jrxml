@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="allCredit" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c00dcda-bb68-4082-998a-1a51371fd04a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="22"/>
+	<field name="montantDemande" class="java.lang.Integer"/>
+	<field name="montantAccordé" class="java.lang.Integer"/>
+	<field name="commission" class="java.lang.Double"/>
+	<field name="contratAssurance" class="java.lang.Integer"/>
+	<field name="dateDecisionFinale" class="java.util.Date"/>
+	<field name="dateRecption" class="java.util.Date"/>
+	<field name="client" class="java.lang.String"/>
+	<group name="Group1">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-40" y="-20" width="615" height="92" backcolor="#AF0F13" uuid="03e8b04b-8a36-48fe-9c44-ad24ca050391"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="6cf016c3-350b-45c2-a5e2-4f97c9d5c737"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Afriland First Bank]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="cd49f20d-3749-4dda-a179-92e3a9753d64"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ CREDIT SCOLAIRE DETAIL]]></text>
+				</staticText>
+				<image>
+					<reportElement x="20" y="20" width="270" height="43" uuid="8bd7ba00-918a-4734-bac1-3ff164298bde"/>
+					<imageExpression><![CDATA["logoAfriland.PNG"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="708893c5-d16c-4e02-80e8-f2ab8c44c110"/>
+			</line>
+			<staticText>
+				<reportElement x="119" y="0" width="54" height="20" uuid="9402e838-b565-45ad-88c2-f6df76ae3707"/>
+				<text><![CDATA[Demande]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="1" width="70" height="18" uuid="59193c52-4d9c-4da4-b236-ebf1c03110b0"/>
+				<text><![CDATA[commission]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="2" width="76" height="16" uuid="04f97c59-0fe5-4907-8538-bc0c2a3a3811"/>
+				<text><![CDATA[dateReponse]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="55" height="20" uuid="f3a46d1a-60dc-414f-b976-e4995eff3544"/>
+				<text><![CDATA[Assurance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="2" width="67" height="19" uuid="90ef7e4a-1399-4d7f-890f-096afb5e2a7c"/>
+				<text><![CDATA[mtAccordé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="1" width="82" height="20" uuid="4cff3b98-19c7-45ad-b324-db19f28fceea"/>
+				<text><![CDATA[dateRecption]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="2" width="99" height="17" uuid="e0949efc-e670-4623-8473-47464f0e73d7"/>
+				<text><![CDATA[client]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="183" height="20" uuid="cd829de5-e186-4df5-82e9-b3e1d05a9324"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="8140e793-070f-4c4e-8e8b-f6f6f838318b"/>
+			</line>
+			<textField>
+				<reportElement x="119" y="0" width="54" height="18" uuid="cb3d0977-d9e1-4d14-bdfc-c7a51c5c7679"/>
+				<textFieldExpression><![CDATA[$F{montantDemande}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="0" width="67" height="20" uuid="b2eaf435-bae6-4f3d-bafa-55322bea69b1"/>
+				<textFieldExpression><![CDATA[$F{montantAccordé}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="59" height="16" uuid="e8e36a38-b0cb-429b-8cd8-b6bc392e5481"/>
+				<textFieldExpression><![CDATA[$F{commission}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="1" width="64" height="14" isRemoveLineWhenBlank="true" uuid="8db73e94-ba5d-4ddd-84d5-7650dd55a039"/>
+				<textFieldExpression><![CDATA[$F{dateDecisionFinale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="44" height="18" uuid="6493b993-8db8-4f31-80bd-03d6e40245c2"/>
+				<textFieldExpression><![CDATA[$F{contratAssurance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="4" width="55" height="16" uuid="851712df-139a-4263-b096-6243d6baec39"/>
+				<textFieldExpression><![CDATA[$F{dateRecption}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="0" width="100" height="20" uuid="c9495dd8-8433-43f1-8732-aa3dae1bb1b1"/>
+				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="15370b8b-c96e-421a-897a-6e857d91da22"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" sur"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="86bcf1a0-c9b9-4660-b1f3-1d9f743c9a6f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="73" y="4" width="100" height="13" uuid="9e922dc8-be89-4c4c-a3f3-3f2097266174"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="4" width="100" height="13" uuid="57a9aec9-b779-43ad-8d29-06ab894904cb"/>
+				<text><![CDATA[édité le]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

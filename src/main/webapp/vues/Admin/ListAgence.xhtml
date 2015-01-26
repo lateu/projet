@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AgenceListForm">
+
+        <p:panel header="liste des agences" style="margin-left: 30%;margin-right: 30%;margin-top: 1%">
+
+            <p:dataTable id="datalist" value="#{agencebean.agences}" var="item"
+                         selectionMode="single" selection="#{agencebean.agenceSelect}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="id"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.code}" filterBy="#{item.code}">
+                    <f:facet name="header">
+                        <h:outputText value="code"/>
+                    </f:facet>
+                    <h:outputText value="#{item.code}"/>
+                </p:column>
+                <p:column sortBy="#{item.ville}" filterBy="#{item.ville}">
+                    <f:facet name="header">
+                        <h:outputText value="ville"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ville}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{msg.Create}"   oncomplete="AgenceCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{msg.View}" update=":AgenceViewForm" oncomplete="AgenceViewDialog.show()" disabled="#{empty agencebean.agenceSelect}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{msg.Edit}" update=":AgenceEditForm:display" oncomplete="AgenceEditDialog.show()" disabled="#{empty agencebean.agenceSelect}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{msg.Delete}" actionListener="{agenceController.delete}" update=":growl,datalist" disabled="#{empty agencebean.agenceSelect}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

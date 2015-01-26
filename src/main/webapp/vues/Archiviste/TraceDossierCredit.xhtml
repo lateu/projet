@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="Template.xhtml">
+        <ui:define name="body" >
+
+            <p:panel  header="parcours des dossiers de Credit"  style="margin-left: 2%;margin-right: 2%;margin-top: 2%"> 
+                <h:form id="form1" prependId="false">  
+
+
+
+                    <p:dataTable id="cars" var="car" value="#{dossierCreditBean.dossierCredits}"   emptyMessage="aucune valeur trouvée avec ce critére "
+                                 paginator="true"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30"
+
+                                 >  
+
+                        <p:column id="ag" filterBy="#{car.agence.code}"   
+                                  headerText="Agence"
+                                  filterMatchMode="contains" >  
+                            <h:outputText value="#{car.agence.code}" />  
+                        </p:column> 
+                        
+                        <p:column id="nd" filterBy="#{car.noPret}"   
+                                  headerText="No-Pret"
+                                  filterMatchMode="contains" >  
+                            <h:outputText value="#{car.noPret}" />  
+                        </p:column> 
+
+                         <p:column id="prenom" filterBy="#{car.compte}"   
+                                  headerText="No Compte" 
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.compte}" />  
+                        </p:column> 
+                        
+                        <p:column id="nom" filterBy="#{car.client}"   
+                                  headerText="Nom Client"
+                                  filterMatchMode="contains" >  
+                            <h:outputText value="#{car.client}" />  
+                        </p:column> 
+
+                       
+
+                        <p:column id="d1" filterBy="#{car.dateMiseEnPlace}"   
+                                  headerText="Date Mise en Place"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.dateMiseEnPlace}" />  
+                        </p:column>
+
+
+                        <p:column id="d2" filterBy="#{car.dateFirstEcheance}"   
+                                  headerText="1er-echeance"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.dateFirstEcheance}" />  
+                        </p:column>
+
+
+                        <p:column id="d3" filterBy="#{car.dateLastEcheance}"   
+                                  headerText="Dernier-echeance"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.dateLastEcheance}" />  
+                        </p:column>
+                        <p:column id="date4" filterBy="#{car.pas1}"   
+                                  headerText="Assistante"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas1}" />  
+                        </p:column>
+
+                        <p:column id="d5" filterBy="#{car.pas2}"   
+                                  headerText="Archiviste"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas2}" />  
+                        </p:column> 
+
+                    </p:dataTable>  
+
+                </h:form>  
+            </p:panel>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

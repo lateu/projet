@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierEditDlg" widgetVar="DossierEditDialog" modal="true" resizable="false" appendToBody="true" header="Veuillez renseigner sur l'anomalie">
+
+            <h:form id="DossierEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{dossierCreatinbean.dossierCreatinCompteSelect != null}">
+                        <h3>Anomalie</h3>  
+                        <p:inputTextarea rows="6" cols="33" value="#{dossierCreatinbean.motif}" required="true" requiredMessage="le motif est obligatoire" /> 
+
+
+                        <p:panel visible="false">
+
+
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{dossierCreatinbean.dossierCreatinCompteSelect.id}" />
+
+                            <p:outputLabel value="compte" for="compte" />
+                            <p:inputText id="compte" value="#{dossierCreatinbean.dossierCreatinCompteSelect.compte}" title="#{myBundle.EditDossierTitle_compte}" />
+
+                            <p:outputLabel value="dateMiseEnCirculation" for="dateMiseEnCirculation" />
+                            <p:calendar id="dateMiseEnCirculation" pattern="MM/dd/yyyy" value="#{dossierCreatinbean.dossierCreatinCompteSelect.dateMiseEnCirculation}" title="#{myBundle.EditDossierTitle_dateMiseEnCirculation}"  showOn="button"/>
+
+                            <p:outputLabel value="client" for="client" />
+                            <p:inputText id="client" value="#{dossierCreatinbean.dossierCreatinCompteSelect.client}" title="#{myBundle.EditDossierTitle_client}" />
+
+
+                        </p:panel>
+
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierCreatinbean.createAnomalie}" value="#{msg.Save}" update="display,:DossierListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DossierEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="DossierEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierCreationCompteEditDlg" widgetVar="DossierCreationCompteEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditDossierCreationCompteTitle}">
+
+            <h:form id="DossierCreationCompteEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{dossierCreatinbean.dossierCreatinCompteSelect!= null}">
+
+                          <p:outputLabel value="compte" for="c" />
+                          <p:inputText id="c" value="#{dossierCreatinbean.dossierCreatinCompteSelect.compte}" title="#{myBundle.EditDossierCreationCompteTitle_cle}" />
+                        
+                        
+                        <p:outputLabel value="cle" for="cle" />
+                        <p:inputText id="cle" value="#{dossierCreatinbean.dossierCreatinCompteSelect.cle}" title="#{myBundle.EditDossierCreationCompteTitle_cle}" />
+
+                          <p:outputLabel value="client" for="cl" />
+                          <p:inputText id="cl" value="#{dossierCreatinbean.dossierCreatinCompteSelect.client}" title="#{myBundle.EditDossierCreationCompteTitle_cle}" />
+
+                        
+                        <p:outputLabel value="dateCreation" for="dateCreation" />
+                        <p:calendar id="dateCreation" pattern="MM/dd/yyyy" value="#{dossierCreatinbean.dossierCreatinCompteSelect.dateCreation}" title="#{myBundle.EditDossierCreationCompteTitle_dateCreation}"  showOn="button"/>
+                    
+                        <p:panel visible="false"> 
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{dossierCreatinbean.dossierCreatinCompteSelect.id}" />
+                        </p:panel>
+
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierCreatinbean.update}" value="#{msg.Save}" update="display,:DossierCreationCompteListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DossierCreationCompteEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="DossierCreationCompteEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

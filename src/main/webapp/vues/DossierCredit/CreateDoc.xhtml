@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierCreationCompteCreateDlg" widgetVar="DossierCreationCompteCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateDossierCreationCompteTitle}">
+
+            <h:form id="DossierCreationCompteCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierCreatinbean.dossierCreatinCompteSelect != null}">
+
+                      
+                            <p:outputLabel value="compte" for="compte" />
+                            <p:inputText id="compte" value="#{dossierCreatinbean.dossierCreatinCompteSelect.compte}"  />
+
+                            <p:outputLabel value="cle" for="cl" />
+                            <p:inputText id="cl" value="#{dossierCreatinbean.dossierCreatinCompteSelect.cle}"  />
+
+                            <p:outputLabel value="Intitule" for="client" />
+                            <p:inputText id="client" value="#{dossierCreatinbean.dossierCreatinCompteSelect.client}"  />
+                            <p:outputLabel value="dateCreation" for="dat" />
+                            <p:calendar id="dat" pattern="dd/MM/yyyy" value="#{dossierCreatinbean.dossierCreatinCompteSelect.dateCreation}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierCreatinbean.saveDossier()}" value="#{msg.Save}" update="display,:DossierCreationCompteListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DossierCreationCompteCreateDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="DossierCreationCompteCreateDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

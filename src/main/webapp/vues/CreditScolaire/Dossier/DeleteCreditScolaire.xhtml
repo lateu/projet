@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CreditScolaireDeleteDlg" widgetVar="CreditScolaireDeleteDialog" modal="true" resizable="false" appendToBody="true" header="motif de suppression ">
+
+            <h:form id="CreditScolaireDeleteForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="1" rendered="#{creditScolairebean.creditScolaireSelect != null}">
+
+
+                       
+
+                        <h3>Bien vouloir donner le motif</h3>  
+                        <p:inputTextarea rows="6" cols="33" value="#{creditScolairebean.motifSuppression}"/>  
+
+                        <p:panel visible="false">
+
+                            <p:outputLabel value="nomClient" for="nomClient" />
+                            <p:inputText id="nomClient" value="#{creditScolairebean.creditScolaireSelect.compte}"  required="true" requiredMessage="#{myBundle.EditCreditScolaireRequiredMessage_nomClient}"/>
+
+
+                            <p:outputLabel value="code" for="code" />
+                            <p:inputText id="code" value="#{creditScolairebean.creditScolaireSelect.compte}"  required="true" requiredMessage="code le  est obligatoire"/>
+
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{creditScolairebean.creditScolaireSelect.id}" />
+                        </p:panel>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{creditScolairebean.delete}" value="confirmation" update="display,:CreditScolaireListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CreditScolaireDeleteDialog);"/>
+                    <p:commandButton value="Cancel" onclick="CreditScolaireDeleteDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

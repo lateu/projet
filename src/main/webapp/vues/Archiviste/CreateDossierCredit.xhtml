@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierCreditCreateDlg" widgetVar="DossierCreditCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateDossierCreditTitle}">
+
+            <h:form id="DossierCreditCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierCreditController.selected != null}">
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_noPret}" for="noPret" />
+                        <p:inputText id="noPret" value="#{dossierCreditController.selected.noPret}" title="#{myBundle.CreateDossierCreditTitle_noPret}" />
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_dateFirstEcheance}" for="dateFirstEcheance" />
+                        <p:calendar id="dateFirstEcheance" pattern="MM/dd/yyyy" value="#{dossierCreditController.selected.dateFirstEcheance}" title="#{myBundle.EditDossierCreditTitle_dateFirstEcheance}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_dateLastEcheance}" for="dateLastEcheance" />
+                        <p:calendar id="dateLastEcheance" pattern="MM/dd/yyyy" value="#{dossierCreditController.selected.dateLastEcheance}" title="#{myBundle.EditDossierCreditTitle_dateLastEcheance}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_dateMiseEnPlace}" for="dateMiseEnPlace" />
+                        <p:calendar id="dateMiseEnPlace" pattern="MM/dd/yyyy" value="#{dossierCreditController.selected.dateMiseEnPlace}" title="#{myBundle.EditDossierCreditTitle_dateMiseEnPlace}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_pas1}" for="pas1" />
+                        <p:inputText id="pas1" value="#{dossierCreditController.selected.pas1}" title="#{myBundle.CreateDossierCreditTitle_pas1}" />
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_pas2}" for="pas2" />
+                        <p:inputText id="pas2" value="#{dossierCreditController.selected.pas2}" title="#{myBundle.CreateDossierCreditTitle_pas2}" />
+
+                        <p:outputLabel value="#{myBundle.CreateDossierCreditLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{dossierCreditController.selected.id}" title="#{myBundle.CreateDossierCreditTitle_id}" required="true" requiredMessage="#{myBundle.CreateDossierCreditRequiredMessage_id}"/>
+
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierCreditController.saveNew}" value="#{myBundle.Save}" update="display,:DossierCreditListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DossierCreditCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="DossierCreditCreateDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

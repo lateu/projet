@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurViewDlg" widgetVar="UtilisateurViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewUtilisateurTitle}">
+
+            <h:form id="UtilisateurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurbean.utilisateurSelect != null}">
+
+                        <h:outputText value="id"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.id}" title="#{myBundle.ViewUtilisateurTitle_id}"/>
+
+                        <h:outputText value="accountState"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.accountState}" title="#{myBundle.ViewUtilisateurTitle_accountState}"/>
+
+                        <h:outputText value=" Agence"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.service.agence.code}" title="#{myBundle.ViewUtilisateurTitle_contact}"/>
+
+                        <h:outputText value="nom"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.nom}" title="#{myBundle.ViewUtilisateurTitle_nom}"/>
+
+                        <h:outputText value="username"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.username}" title="#{myBundle.ViewUtilisateurTitle_username}"/>
+
+
+                        <h:outputText value="service"/>
+                        <h:outputText value="#{utilisateurbean.utilisateurSelect.service.nom}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="#{msg.Close}" onclick="UtilisateurViewDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

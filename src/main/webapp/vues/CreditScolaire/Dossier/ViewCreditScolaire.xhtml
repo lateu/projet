@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CreditScolaireViewDlg" widgetVar="CreditScolaireViewDialog" modal="true" resizable="false" appendToBody="true" header="Information complete sur une demande de credit">
+
+            <h:form id="CreditScolaireViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{creditScolairebean.creditScolaireSelect != null}">
+                    
+                          
+                            <h:outputText value="client:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.client}" style="font-weight:bold"/>  
+
+
+                            <h:outputText value="mt Demandé:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.montantDemande}" style="font-weight:bold"/>  
+
+                            <h:outputText value="dt Dde:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.dateRecption}" style="font-weight:bold"/> 
+
+
+                            <h:outputText value="Assurance:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.contratAssurance}" style="font-weight:bold"/> 
+
+                              
+                            <h:outputText value="mt Accordé:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.montantAccordé}" style="font-weight:bold"/> 
+     
+                            <h:outputText value="Etat Actuelle:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.valider}" style="font-weight:bold"/> 
+  
+                            <h:outputText value="Date Reponse:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.dateDecisionFinale}" style="font-weight:bold"/> 
+   
+                      
+                            
+                            <h:outputText value="Personnel:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.utilisateur.username}" style="font-weight:bold"/> 
+   
+                            
+                            <h:outputText value="valideur:" />  
+                            <h:outputText value="#{creditScolairebean.creditScolaireSelect.valideur}" style="font-weight:bold"/> 
+       
+                            
+                    </p:panelGrid>
+                    <p:commandButton value="Close" onclick="CreditScolaireViewDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

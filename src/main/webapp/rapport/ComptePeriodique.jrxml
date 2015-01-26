@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ComptePeriodique" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fd3027b1-f5db-4ace-bf0c-215f1dc2287e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="cle" class="java.lang.String"/>
+	<field name="client" class="java.lang.String"/>
+	<group name="Group1">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#958883" uuid="511f6be3-e4d0-4666-8d0b-b6bc2f195037"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="63bf5695-b0a9-4c88-9e05-28f2a09b5c9c"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="499587a1-feca-4232-893c-ecafffffc22b"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="false"/>
+					</textElement>
+					<text><![CDATA[compte crées  ds la periode]]></text>
+				</staticText>
+				<image>
+					<reportElement x="20" y="20" width="234" height="42" uuid="e6eef48d-6ea0-4891-8da2-2a51d08e1cde"/>
+					<imageExpression><![CDATA["logoAfriland.PNG"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="90" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0c2fa2a8-f493-438a-a9d2-c8b578e86c63"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detail]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="ee316adb-6d4a-4621-b551-4eb50970347e"/>
+			</line>
+			<staticText>
+				<reportElement x="134" y="1" width="100" height="20" uuid="99285a65-3342-4073-abc5-bb484da10962"/>
+				<text><![CDATA[compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="1" width="100" height="20" uuid="b1141fed-b6f5-40f9-9e3e-ec633f7dae94"/>
+				<text><![CDATA[cle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="1" width="100" height="20" uuid="14e265f2-0f03-4060-9b21-1751e2384251"/>
+				<text><![CDATA[client]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="100" height="20" uuid="dc2a6397-a789-455d-afb5-4685d763d72d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="5fb15432-76a6-406a-8f84-368a5966207c"/>
+			</line>
+			<textField>
+				<reportElement x="134" y="0" width="100" height="20" uuid="14cfda38-0dff-47d3-9178-3e7e20710435"/>
+				<textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="100" height="20" uuid="00d3f22c-69a6-408c-9751-fb20b3304166"/>
+				<textFieldExpression><![CDATA[$F{cle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="100" height="20" uuid="c120e9e5-2719-4f3e-9514-cd9571be49cc"/>
+				<textFieldExpression><![CDATA[$F{client}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="48145a1e-896e-46d1-80c5-96ed7f9d215f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="47029ef8-d14c-4df0-8766-2c1238e055cb"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="1644c17c-9133-4bb5-8433-0a011c518407"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

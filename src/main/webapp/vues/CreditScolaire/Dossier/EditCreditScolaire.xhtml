@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CreditScolaireEditDlg" widgetVar="CreditScolaireEditDialog" modal="true" resizable="false" appendToBody="true" header="validation ou rejet d'un dossier de credit scolaire ">
+
+            <h:form id="CreditScolaireEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{creditScolairebean.creditScolaireSelect != null}">
+
+                        <h:outputLabel value="valider" for="con" />
+                        <p:selectOneRadio id="con" value="#{creditScolairebean.creditScolaireSelect.valider}"  required="true" requiredMessage="vous devez faire un choix" >  
+                            <f:selectItem itemLabel="Rejeté" itemValue="rejeté" />  
+                            <f:selectItem itemLabel="Validé" itemValue="ok" />
+                            <f:selectItem itemLabel="En attene" itemValue="en cours..." />  
+                        </p:selectOneRadio>
+
+                        <p:outputLabel value="montantAccordé" for="montantAccordé" />
+                        <p:inputText id="montantAccordé" value="#{creditScolairebean.creditScolaireSelect.montantAccordé}"  required="true" requiredMessage="montantAccordé"/>
+
+
+                        <h:outputLabel value="contratAssurance *" for="contratAssurance" />
+                        <p:selectOneRadio id="contratAssurance" value="#{creditScolairebean.creditScolaireSelect.contratAssurance}"  required="true" requiredMessage="vous devez faire un choix">  
+                            <f:selectItem itemLabel="NOM" itemValue="0" />  
+                            <f:selectItem itemLabel="OK" itemValue="1" />  
+
+                        </p:selectOneRadio>
+
+
+                         <p:outputLabel value="Date" for="c223" />
+                         <p:calendar id="c223" value="#{creditScolairebean.creditScolaireSelect.dateDecisionFinale}"   mode="popup" showOn="button" />
+                   
+                     
+                        <p:panel visible="false">
+
+                            <p:outputLabel value="nomClient" for="nomClient" />
+                            <p:inputText id="nomClient" value="#{creditScolairebean.creditScolaireSelect.client}"  required="true" requiredMessage="#{myBundle.EditCreditScolaireRequiredMessage_nomClient}"/>
+
+
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{creditScolairebean.creditScolaireSelect.id}" />
+                        </p:panel>
+
+
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{creditScolairebean.decision}" value="Save" update="display,:CreditScolaireListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CreditScolaireEditDialog);"/>
+                    <p:commandButton value="Cancel" onclick="CreditScolaireEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

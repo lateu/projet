@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DossierCreditListForm">
+
+        <p:panel header="dossiers credit à archiver">
+
+            <p:dataTable id="datalist" value="#{dossierCreditBean.dossierCreditsForArchive}" var="item"
+                         selectionMode="single" selection="#{dossierCreditBean.creditSelect}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                
+                <p:column sortBy="#{item.agence.code}" filterBy="#{item.agence.code}">
+                    <f:facet name="header">
+                        <h:outputText value="Agence"/>
+                    </f:facet>
+                    <h:outputText value="#{item.agence.code}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.noPret}" filterBy="#{item.noPret}">
+                    <f:facet name="header">
+                        <h:outputText value="no_Pret"/>
+                    </f:facet>
+                    <h:outputText value="#{item.noPret}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.compte}" filterBy="#{item.compte}">
+                    <f:facet name="header">
+                        <h:outputText value="Compte"/>
+                    </f:facet>
+                    <h:outputText value="#{item.compte}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.client}" filterBy="#{item.client}">
+                    <f:facet name="header">
+                        <h:outputText value="Client"/>
+                    </f:facet>
+                    <h:outputText value="#{item.client}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.dateFirstEcheance}" filterBy="#{item.dateFirstEcheance}">
+                    <f:facet name="header">
+                        <h:outputText value="date_1ere_Echeance"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateFirstEcheance}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.dateLastEcheance}" filterBy="#{item.dateLastEcheance}">
+                    <f:facet name="header">
+                        <h:outputText value="date_derniere-Echeance"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateLastEcheance}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.dateMiseEnPlace}" filterBy="#{item.dateMiseEnPlace}">
+                    <f:facet name="header">
+                        <h:outputText value="date_Mise_En_Place"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateMiseEnPlace}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                
+               
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{dossierCreditController.prepareCreate}" update=":DossierCreditCreateForm" oncomplete="DossierCreditCreateDialog.show()" disabled="true"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":DossierCreditViewForm" oncomplete="DossierCreditViewDialog.show()" disabled="true"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":DossierCreditEditForm" oncomplete="DossierCreditEditDialog.show()" disabled="true"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-plus"  value="Archiver" actionListener="#{dossierCreditBean.archiverDossierCredit}" update=":growl,datalist" disabled="#{empty dossierCreditBean.creditSelect}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

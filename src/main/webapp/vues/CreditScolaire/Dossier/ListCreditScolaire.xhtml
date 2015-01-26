@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="CreditScolaireListForm">
+
+        <p:panel header="liste des demande de credit" style="margin-left: 5%;margin-right: 5%; margin-top: 10%">
+
+            <p:dataTable id="datalist" value="#{creditScolairebean.creditScolaires}" var="item"
+                         selectionMode="single" selection="#{creditScolairebean.creditScolaireSelect }"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="15"
+                         rowsPerPageTemplate="15,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+
+                <p:column sortBy="#{item.client}" filterBy="#{item.client}">
+                    <f:facet name="header">
+                        <h:outputText value="nomClient"/>
+                    </f:facet>
+                    <h:outputText value="#{item.client}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.compte}" filterBy="#{item.compte}">
+                    <f:facet name="header">
+                        <h:outputText value="No Compte"/>
+                    </f:facet>
+                    <h:outputText value="#{item.compte}"/> 
+
+                </p:column>
+
+                <p:column sortBy="#{item.agence.code}" filterBy="#{item.agence.code}">
+                    <f:facet name="header">
+                        <h:outputText value="Agence"/>
+                    </f:facet>
+                    <h:outputText value="#{item.agence.code}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montantDemande}" filterBy="#{item.montantDemande}">
+                    <f:facet name="header">
+                        <h:outputText value="Montant Ddé"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montantDemande}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.dateRecption}" filterBy="#{item.dateRecption}">
+                    <f:facet name="header">
+                        <h:outputText value="dateRecption"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateRecption}"/> 
+
+                </p:column>
+                <p:column sortBy="#{item.valider}" filterBy="#{item.valider}">
+                    <f:facet name="header">
+                        <h:outputText value="Decision"/>
+                    </f:facet>
+                    <h:outputText value="#{item.valider}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montantAccordé}" filterBy="#{item.montantAccordé}">
+                    <f:facet name="header">
+                        <h:outputText value="Montant Accordé"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montantAccordé}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.dateDecisionFinale}" filterBy="#{item.dateDecisionFinale}">
+                    <f:facet name="header">
+                        <h:outputText value="dateReponse"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateDecisionFinale}" /> 
+
+                </p:column>
+
+
+                <p:panel visible="false">
+                    <p:column sortBy="#{item.commission}" filterBy="#{item.commission}">
+                        <f:facet name="header">
+                            <h:outputText value="commission"/>
+                        </f:facet>
+                        <h:outputText value="#{item.commission}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                        <f:facet name="header">
+                            <h:outputText value="id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{item.contratAssurance}" filterBy="#{item.contratAssurance}">
+                        <f:facet name="header">
+                            <h:outputText value="Assurance"/>
+                        </f:facet>
+                        <h:outputText value="#{item.contratAssurance}"/>
+                    </p:column>
+
+
+                </p:panel>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"    value="#{msg['Create']}"   oncomplete="CreditScolaireCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{msg['View']}"  update=":CreditScolaireViewForm" oncomplete="CreditScolaireViewDialog.show()" disabled="#{empty creditScolairebean.creditScolaireSelect }"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{msg['Edit']}"  update=":CreditScolaireEditForm:display" oncomplete="CreditScolaireEditDialog.show()" disabled="#{empty creditScolairebean.creditScolaireSelect }"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{msg['Delete']}"  update=":CreditScolaireDeleteForm:display" oncomplete="CreditScolaireDeleteDialog.show()" disabled="true" />
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

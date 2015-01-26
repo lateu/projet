@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurEditDlg" widgetVar="UtilisateurEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditUtilisateurTitle}">
+
+            <h:form id="UtilisateurEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{utilisateurbean.utilisateurSelect != null}">
+                        
+                        <h:outputLabel value="{msg.accountState}" for="accountState" />
+                        <p:selectOneRadio id="accountState" value="#{utilisateurbean.utilisateurSelect.accountState}"  required="true" requiredMessage="vous devez faire un choix" >  
+                            <f:selectItem itemLabel="Bloquer" itemValue="0" />  
+                            <f:selectItem itemLabel="Activer" itemValue="1" />
+
+                        </p:selectOneRadio>   
+
+                        <p:outputLabel value="{msg.username}" for="username" />
+                        <p:inputText id="username" value="#{utilisateurbean.utilisateurSelect.username}"  required="true" requiredMessage="#{myBundle.EditUtilisateurRequiredMessage_username}"/>
+
+
+                        <p:outputLabel value="Privillége" for="autorie" />
+                        <p:selectOneMenu id="autorie" value="#{utilisateurbean.role}"  >
+                            <f:selectItem itemValue="#" itemLabel="choisir" /> 
+                            <f:selectItem itemValue="ROLE_CONSULTANT" itemLabel="Consultant" /> 
+                            <f:selectItem itemValue="ROLE_ASSISTANT" itemLabel="Assistant" />
+                            <f:selectItem itemValue="ROLE_CA" itemLabel="Chef-Agence" />
+                            <f:selectItem itemValue="ROLE_ADMIN" itemLabel="Admin" />  
+                        </p:selectOneMenu>
+                        
+                        <p:panel visible="false">
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{utilisateurbean.utilisateurSelect.id}" />
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurbean.updateUser}" value="#{msg.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UtilisateurEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="UtilisateurEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

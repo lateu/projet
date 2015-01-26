@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AgenceEditDlg" widgetVar="AgenceEditDialog" modal="true" resizable="false" appendToBody="true" header="modifier une agence">
+
+            <h:form id="AgenceEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{agencebean.agenceSelect != null}">
+
+                        <p:outputLabel value="code" for="code" />
+                        <p:inputText id="code" value="#{agencebean.agenceSelect.code}"  />
+
+                        <p:outputLabel value="ville" for="ville" />
+                        <p:inputText id="ville" value="#{agencebean.agenceSelect.ville}"  />
+                        
+                        
+                        <p:panel visible="false">                         
+                        <h:outputLabel value="id" for="id" />
+                        <h:inputText id="id" value="#{agencebean.agenceSelect.id}" />              
+                        </p:panel>
+                        
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="{agenceController.save}" value="#{msg.Save}" update="display,:AgenceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AgenceEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="AgenceEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

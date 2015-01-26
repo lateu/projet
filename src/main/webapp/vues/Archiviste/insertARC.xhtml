@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="Template.xhtml">
+
+        <ui:define name="body" >
+            <p:panel style="margin-left: 30%;margin-right: 30%;margin-top: 2%">
+
+                <p style="font-weight:bold; font-size: 20px"> Entrée aux archives d'un nouveau dossier</p>
+                <h:form id="ArchivageCreateForm">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+
+                    <p:panelGrid columns="2" >
+
+                        <p:outputLabel value="Compte" for="account" />
+                        <p:inputText id="account" value="#{archivebean.archivageselecr.compte}"  />
+
+                        <p:outputLabel value="Client" for="intitule" />
+                        <p:inputText id="intitule" value="#{archivebean.archivageselecr.client}" />
+
+                        <h:outputLabel value="TypeDossier" for="status" style="width: 100%"/>
+                        <p:selectOneMenu id="status" value="#{archivebean.archivageselecr.typeDocument}"  >
+                            <f:selectItem itemValue="#" itemLabel="choisir" /> 
+                            <f:selectItem itemValue="credit-Particulier" itemLabel="Credit-particulier" /> 
+                            <f:selectItem itemValue="credit-scolaire" itemLabel="Credit-Scolaire" /> 
+                         
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton action="#{archivebean.create()}" value="#{msg.Save}" update="growl" />
+                    <p:commandButton value="#{msg.Cancel}" onclick="ArchivageCreateDialog.hide();"/>
+
+
+                </h:form>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

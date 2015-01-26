@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierCreationCompteViewDlg" widgetVar="DossierCreationCompteViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewDossierCreationCompteTitle}">
+
+            <h:form id="DossierCreationCompteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierCreationCompteController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_cle}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.cle}" title="#{myBundle.ViewDossierCreationCompteTitle_cle}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_dateCreation}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.dateCreation}" title="#{myBundle.ViewDossierCreationCompteTitle_dateCreation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_dateMiseEnCirculation}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.dateMiseEnCirculation}" title="#{myBundle.ViewDossierCreationCompteTitle_dateMiseEnCirculation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_pas1}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.pas1}" title="#{myBundle.ViewDossierCreationCompteTitle_pas1}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_pas2}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.pas2}" title="#{myBundle.ViewDossierCreationCompteTitle_pas2}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_pas3}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.pas3}" title="#{myBundle.ViewDossierCreationCompteTitle_pas3}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_pas4}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.pas4}" title="#{myBundle.ViewDossierCreationCompteTitle_pas4}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_id}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.id}" title="#{myBundle.ViewDossierCreationCompteTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_agenceId}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.agenceId.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_dossier}"/>
+                        <h:outputText value="#{dossierCreationCompteController.selected.dossier.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_anomalieList}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreationCompteLabel_controlList}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="DossierCreationCompteViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

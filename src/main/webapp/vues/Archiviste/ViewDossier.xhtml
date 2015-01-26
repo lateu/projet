@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierViewDlg" widgetVar="DossierViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewDossierTitle}">
+
+            <h:form id="DossierViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierCreatinbean.dossierCreatinCompteSelect != null}">
+
+                        <h:outputText value="id"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.id}" title="#{myBundle.ViewDossierTitle_id}"/>
+
+                        <h:outputText value="client"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.client}" title="#{myBundle.ViewDossierTitle_client}"/>
+
+                        <h:outputText value="compte"/>
+                        <h:outputText value="#{dossierController.selected.compte}" title="#{myBundle.ViewDossierTitle_compte}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierLabel_dateMiseEnCirculation}"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.dateMiseEnCirculation}" title="#{myBundle.ViewDossierTitle_dateMiseEnCirculation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="Chef-Agence"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.pas1}" title="#{myBundle.ViewDossierTitle_pas1}"/>
+
+                        <h:outputText value="Juriste"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.pas2}" title="#{myBundle.ViewDossierTitle_pas2}"/>
+
+                        <h:outputText value="Informaticien"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.pas3}" title="#{myBundle.ViewDossierTitle_pas3}"/>
+
+                        <h:outputText value="Archiviste"/>
+                        <h:outputText value="#{dossierCreatinbean.dossierCreatinCompteSelect.pas4}" title="#{myBundle.ViewDossierTitle_pas4}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="#{msg.Close}" onclick="DossierViewDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

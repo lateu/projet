@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AnomalieCreateDlg" widgetVar="AnomalieCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateAnomalieTitle}">
+
+            <h:form id="AnomalieCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{anomalieController.selected != null}">
+
+                        <p:outputLabel value="#{myBundle.CreateAnomalieLabel_motif}" for="motif" />
+                        <p:inputText id="motif" value="#{anomalieController.selected.motif}" title="#{myBundle.CreateAnomalieTitle_motif}" />
+
+                        <p:outputLabel value="#{myBundle.CreateAnomalieLabel_personneCor}" for="personneCor" />
+                        <p:inputText id="personneCor" value="#{anomalieController.selected.personneCor}" title="#{myBundle.CreateAnomalieTitle_personneCor}" />
+
+                        <p:outputLabel value="#{myBundle.CreateAnomalieLabel_personneInit}" for="personneInit" />
+                        <p:inputText id="personneInit" value="#{anomalieController.selected.personneInit}" title="#{myBundle.CreateAnomalieTitle_personneInit}" />
+
+                        <p:outputLabel value="#{myBundle.CreateAnomalieLabel_dateOp}" for="dateOp" />
+                        <p:calendar id="dateOp" pattern="MM/dd/yyyy" value="#{anomalieController.selected.dateOp}" title="#{myBundle.EditAnomalieTitle_dateOp}"  showOn="button"/>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{anomalieController.saveNew}" value="#{myBundle.Save}" update="display,:AnomalieListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AnomalieCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AnomalieCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

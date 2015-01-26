@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <head>
+        <!--       <h:outputStylesheet library="css" name="pfcrud.css"/>
+                -->
+        <title>connexion Suivi-Dossier</title>
+        <style>
+            .errorblock {
+                color: #ff0000;
+                background-color: #ffEEEE;
+                border: 3px solid #ff0000;
+                padding: 8px;
+                margin: 16px;
+            }
+
+
+        </style>
+    </head>
+    <body onload='document.f.j_username.focus();' bgcolor="#AFAFAF" >
+        <div class="body"></div>
+        <a href="images/Auteur.pdf" style="margin-left: 90%;margin-right: 5%;">A propos</a>
+        <h3 style="margin-left: 43%;margin-right: 40%;">AUTHENTIFICATION  </h3>
+
+        <c:if test="${not empty error}">
+            <div class="errorblock" style="margin-left: 35%;margin-right: 30%;">
+                Echec de la connexion<br /> Caused :
+                ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+            </div>
+        </c:if>
+
+        <form name='f' action="j_spring_security_check" method='POST' id="form1">
+           
+
+            <table style="margin-left: 40%;margin-right: 35%; background-color: #4b5078;">
+                
+                
+                <tr>
+                    <td colspan="2"> <img src="images/logo.PNG" alt="rien" width="100%" height="75" /></td>
+                   
+                </tr>
+                
+                
+                <tr>
+                    <td>login:</td>
+                    <td><input type='text' name='j_username' value=''/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type='password' name='j_password' />
+                    </td>
+                </tr>
+                <tr>
+                    <td >Remember me ?</td ><td >   <input type="checkbox" name="_spring_security_remember_me"/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td ></td ><td ><input name="submit" type="submit" value="connexion >>" /><input name="reset" type="reset" value="annuler" />
+
+                    </td>
+                </tr>
+
+            </table>
+            
+            <div><img src="images/titre.PNG" alt="rien" width="50%" height="50" style="margin-left: 25%;margin-right: 25%;margin-top: 10%" /></div>
+           
+        </form>
+      
+    </body>
+</html>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CreditScolaireCreateDlg" widgetVar="CreditScolaireCreateDialog" modal="true" resizable="false" appendToBody="true" header="Enregistrement d'un dossier de credit">
+
+            <h:form id="CreditScolaireCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{creditScolairebean.creditScolaireSelect != null}">
+
+                        <p:outputLabel value="nomClient" for="nomClient" />
+                        <p:inputText id="nomClient" value="#{creditScolairebean.creditScolaireSelect.client}" required="true" requiredMessage="le nom du client est obligatoire"/>
+
+                        <p:outputLabel value="Montant Demandé" for="code2" />
+                        <p:inputText id="code2" value="#{creditScolairebean.creditScolaireSelect.montantDemande}" required="true" requiredMessage="vous devez saisir le montant" />
+
+                       <p:outputLabel value="No Compte" for="c2" />
+                        <p:inputText id="c2" value="#{creditScolairebean.creditScolaireSelect.compte}" required="true" requiredMessage=" le numero de compte est obligatoire" />
+
+                        <p:outputLabel value="Date" for="c22" />
+                        <p:calendar id="c22" value="#{creditScolairebean.creditScolaireSelect.dateRecption}"   mode="popup" showOn="button" />
+                   
+
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{creditScolairebean.create}" value="Save" update="display,:CreditScolaireListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CreditScolaireCreateDialog);"/>
+                    <p:commandButton value="Cancel" onclick="CreditScolaireCreateDialog.hide();"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

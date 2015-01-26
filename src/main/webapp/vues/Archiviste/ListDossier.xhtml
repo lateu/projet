@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DossierListForm">
+
+        <p:panel header="Dossiers Juridique Actuellement disponible à votre niveau pour control" style="margin-left: 20%;margin-right: 20%;margin-top: 2%">
+
+            <p:dataTable id="datalist" value="#{dossierCreatinbean.comptes}" var="item"
+                         selectionMode="single" selection="#{dossierCreatinbean.dossierCreatinCompteSelect}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         emptyMessage="aucun dossier disponible pour le moment"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+
+                <p:column sortBy="#{item.agence.code}" filterBy="#{item.agence.code}">
+                    <f:facet name="header">
+                        <h:outputText value="code Agence"/>
+                    </f:facet>
+                    <h:outputText value="#{item.agence.code}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.compte}" filterBy="#{item.compte}">
+                    <f:facet name="header">
+                        <h:outputText value="compte"/>
+                    </f:facet>
+                    <h:outputText value="#{item.compte}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.cle}" filterBy="#{item.cle}">
+                    <f:facet name="header">
+                        <h:outputText value="cle"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cle}"/>
+                </p:column>
+                <p:column sortBy="#{item.client}" filterBy="#{item.client}">
+                    <f:facet name="header">
+                        <h:outputText value="client" style="60%"/>
+                    </f:facet>
+                    <h:outputText value="#{item.client}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateMiseEnCirculation}" filterBy="#{item.dateMiseEnCirculation}">
+                    <f:facet name="header">
+                        <h:outputText value="dateMiseEnCirculation"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateMiseEnCirculation}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:panel>
+
+                    <p:column sortBy="#{item.pas1}" filterBy="#{item.pas1}">
+                        <f:facet name="header">
+                            <h:outputText value="pas1"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pas1}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.pas2}" filterBy="#{item.pas2}">
+                        <f:facet name="header">
+                            <h:outputText value="pas2"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pas2}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.pas3}" filterBy="#{item.pas3}">
+                        <f:facet name="header">
+                            <h:outputText value="pas3"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pas3}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.pas4}" filterBy="#{item.pas4}">
+                        <f:facet name="header">
+                            <h:outputText value="pas4"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pas4}"/>
+                    </p:column>
+                </p:panel>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{msg.Create}"  oncomplete="DossierCreateDialog.show()" disabled="true"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{msg.View}" update=":DossierViewForm" oncomplete="DossierViewDialog.show()" disabled="#{empty dossierCreatinbean.dossierCreatinCompteSelect}"/>
+                    <p:commandButton id="editButton"    icon="ui-icon-plus" value="Anomalie" update=":DossierEditForm:display" oncomplete="DossierEditDialog.show()" disabled="#{empty dossierCreatinbean.dossierCreatinCompteSelect}"/>
+                    <p:commandButton id="deleteButton"  icon="ui-icon-plus"  value="Ok" actionListener="#{dossierCreatinbean.ok}" update=":growl,datalist" disabled="#{empty dossierCreatinbean.dossierCreatinCompteSelect}"/>
+
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServiceCreateDlg" widgetVar="ServiceCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateServiceTitle}">
+
+            <h:form id="ServiceCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{servicebean.serviceselect!= null}">
+
+                        <p:outputLabel value="nom Service" for="nom" />
+                        <p:inputText id="nom" value="#{servicebean.serviceselect.nom}" title="nom du service" />
+                        
+                        
+                            <p:outputLabel value="code Agence" for="n" />
+                            <p:inputText id="n" value="#{servicebean.codeAgence}" title="code agence" />
+                        
+                     
+                        
+                        <p:outputLabel value="chef" for="chef" />
+                        <p:inputText id="chef" value="#{servicebean.serviceselect.chef}" title="chef  service" />
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{servicebean.createService}" value="#{msg.Save}" update="display,:ServiceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ServiceCreateDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="ServiceCreateDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

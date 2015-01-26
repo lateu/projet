@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierCreditViewDlg" widgetVar="DossierCreditViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewDossierCreditTitle}">
+
+            <h:form id="DossierCreditViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierCreditController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_noPret}"/>
+                        <h:outputText value="#{dossierCreditController.selected.noPret}" title="#{myBundle.ViewDossierCreditTitle_noPret}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_dateFirstEcheance}"/>
+                        <h:outputText value="#{dossierCreditController.selected.dateFirstEcheance}" title="#{myBundle.ViewDossierCreditTitle_dateFirstEcheance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_dateLastEcheance}"/>
+                        <h:outputText value="#{dossierCreditController.selected.dateLastEcheance}" title="#{myBundle.ViewDossierCreditTitle_dateLastEcheance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_dateMiseEnPlace}"/>
+                        <h:outputText value="#{dossierCreditController.selected.dateMiseEnPlace}" title="#{myBundle.ViewDossierCreditTitle_dateMiseEnPlace}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_pas1}"/>
+                        <h:outputText value="#{dossierCreditController.selected.pas1}" title="#{myBundle.ViewDossierCreditTitle_pas1}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_pas2}"/>
+                        <h:outputText value="#{dossierCreditController.selected.pas2}" title="#{myBundle.ViewDossierCreditTitle_pas2}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_id}"/>
+                        <h:outputText value="#{dossierCreditController.selected.id}" title="#{myBundle.ViewDossierCreditTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_agenceId}"/>
+                        <h:outputText value="#{dossierCreditController.selected.agenceId.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewDossierCreditLabel_dossier}"/>
+                        <h:outputText value="#{dossierCreditController.selected.dossier.id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="DossierCreditViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

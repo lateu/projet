@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArchivageViewDlg" widgetVar="ArchivageViewDialog" modal="true" resizable="false" appendToBody="true" header="Information sur le dossier">
+
+            <h:form id="ArchivageViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{archivebean.archivageselecr != null}">
+
+                        <h:outputText value="Agence"/>
+                        <h:outputText value="#{archivebean.archivageselecr.agence.code}" />
+
+                        <h:outputText value="compte"/>
+                        <h:outputText value="#{archivebean.archivageselecr.compte}" />
+
+                        <h:outputText value="intitule"/>
+                        <h:outputText value="#{archivebean.archivageselecr.client}" />
+
+                        <h:outputText value="position"/>
+                        <h:outputText value="#{archivebean.archivageselecr.position}" />
+
+                             </p:panelGrid>
+                    <p:commandButton value="#{msg.Close}" onclick="ArchivageViewDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

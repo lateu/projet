@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="Template.xhtml">
+            <ui:define name="body" >
+
+                <p:panel header="dossiers à envoyer pour control">
+                    <h:form id="form11" prependId="false">  
+
+                        <p:growl id="growl2" showDetail="true" /> 
+
+                        <p:dataTable id="cars" var="fr" value="#{dossierCreatinbean.accueil}"  widgetVar="carsTable" emptyMessage="" style=" width: 40%; margin-left: 30%"
+                                     paginator="true" rows="8"  
+                                     selection="#{dossierCreatinbean.dossierCreatinCompteSelect}"
+                                     rowKey="#{fr.id}"
+                                     rowsPerPageTemplate="8,15,20"
+                                     selectionMode="single"
+                                     >  
+
+                            <p:column id="nom" filterBy="#{fr.agence.code}"   
+                                      headerText="Agence"
+                                      filterMatchMode="contains" style=" width: 60%">  
+                                <h:outputText value="#{fr.agence.code}" />  
+
+                            </p:column> 
+
+                            <p:column id="iden" filterBy="#{fr.compte}"   
+                                      headerText="Compte"
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{fr.compte}" />  
+                            </p:column> 
+
+
+
+                            <p:column id="ville" filterBy="#{fr.cle}"   
+                                      headerText="Cle" 
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{fr.cle}" />  
+                            </p:column> 
+
+
+
+
+                            <p:column id="PT" filterBy="#{fr.client}"   
+                                      headerText="Intitule" 
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{fr.client}" />  
+                            </p:column> 
+
+
+                        </p:dataTable>  
+
+
+                        <p:panel style=" width: 10%; margin-left: 30%" >  
+
+                            <p:commandButton value="Circuler" actionListener="#{dossierCreatinbean.mettreEnCirculation}" id="withIcon0"   icon="ui-icon-disk" update=":form11:cars,:form12"/>
+                        </p:panel>  
+                        <!--<f:facet name="footer"></f:facet>-->
+
+                    </h:form>  
+                </p:panel>
+                <div id="top2">
+
+                    <h:form id="form12">  
+                        <p:panel style="width: 20%; margin-left: 75%;background: #036fab" id="blocMt">
+                            <p:panelGrid columns="2" >
+
+                                <h:outputLabel value="nombre total de dossier à controller" />
+                                <h:outputLabel id="mt" value="#{dossierCreatinbean.nbCirculation}"/>
+                            </p:panelGrid>
+
+                        </p:panel>
+                    </h:form> 
+                </div>
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

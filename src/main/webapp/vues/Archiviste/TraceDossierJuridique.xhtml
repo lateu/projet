@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="Template.xhtml">
+        <ui:define name="body" >
+
+            <p:panel  header="parcours des dossiers Juridique"  style="margin-left: 2%;margin-right: 2%;margin-top: 2%"> 
+                <h:form id="form1" prependId="false">  
+
+
+
+                    <p:dataTable id="cars" var="car" value="#{dossierCreatinbean.traces}"   emptyMessage="aucune valeur trouvée avec ce critére "
+                                 paginator="true"
+                                 rows="5"
+                                 rowsPerPageTemplate="5,8,10"
+
+                                 >  
+
+
+                        <p:column id="nom" filterBy="#{car.client}"   
+                                  headerText="Nom Client"
+                                  filterMatchMode="contains" >  
+                            <h:outputText value="#{car.client}" />  
+                        </p:column> 
+
+                        <p:column id="prenom" filterBy="#{car.compte}"   
+                                  headerText="No Compte" 
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.compte}" />  
+                        </p:column> 
+
+                        <p:column id="date" filterBy="#{car.dateCreation}"   
+                                  headerText="Date Ouverture"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.dateCreation}" />  
+                        </p:column>
+
+
+                        <p:column id="date2" filterBy="#{car.dateMiseEnCirculation}"   
+                                  headerText="Debut Circulation"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.dateMiseEnCirculation}" />  
+                        </p:column>
+
+
+                        <p:column id="date5" filterBy="#{car.pas5}"   
+                                  headerText="Accueil"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas5}" />  
+                        </p:column>
+
+                        <p:column id="d" filterBy="#{car.pas1}"   
+                                  headerText="Chef-Agence"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas1}" />  
+                        </p:column> 
+
+                        <p:column id="da" filterBy="#{car.pas2}"   
+                                  headerText="Juriste"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas2}" />  
+                        </p:column>
+
+                        <p:column id="dat" filterBy="#{car.pas3}"   
+                                  headerText="Informatique"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas3}" />  
+                        </p:column>
+
+                        <p:column id="date1" filterBy="#{car.pas4}"   
+                                  headerText="Archiviste"
+                                  filterMatchMode="contains">  
+                            <h:outputText value="#{car.pas4}" />  
+                        </p:column>
+
+
+                    </p:dataTable>  
+
+                </h:form>  
+            </p:panel>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

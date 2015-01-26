@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AnomalieEditDlg" widgetVar="AnomalieEditDialog" modal="true" resizable="false" appendToBody="true" header="correction d'une anomalie">
+
+            <h:form id="AnomalieEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{dossierCreatinbean.anomalieSelect != null}">
+
+                        
+                        
+                        <h3>solution*</h3>  
+                        <p:inputTextarea rows="6" cols="33" value="#{dossierCreatinbean.motif}" required="true" requiredMessage="Veuillez preciser la correction apportée svp" /> 
+
+                        <p:panel visible="false">
+                            
+                         <h:outputLabel value="id" for="id" />
+                        <h:inputText id="id" value="#{dossierCreatinbean.anomalieSelect.id}" />
+                        </p:panel>     
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierCreatinbean.annulerAnomalie}" value="#{msg.Save}" update="display,:AnomalieListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AnomalieEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="AnomalieEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

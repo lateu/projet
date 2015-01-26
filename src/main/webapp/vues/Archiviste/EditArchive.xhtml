@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="ArchivageEditDlg" widgetVar="ArchivageEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditArchivageTitle}">
+
+            <h:form id="ArchivageEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{archivebean.archivageselecr != null}">
+   
+                        <p:outputLabel value="Service" for="service" />
+                        <p:selectOneMenu id="service" value="#{archivebean.nomService}" required="true" requiredMessage="la precision du service est abligatoire">
+                            <f:selectItems value="#{archivebean.listeServiveSelect}" />                        
+                            <p:ajax update="suburbs"  listener="#{archivebean.handleNomServiceChange}"
+                                    /> 
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Personnel" for="suburbs" />
+                      
+                        <p:selectOneMenu id="suburbs" value="#{archivebean.idPersonnel}" required="true" requiredMessage="veuillez specifier le personel " > 
+                            <f:selectItems value="#{archivebean.utilisateurs}" var="user" itemLabel="#{user.nom}"  itemValue="#{user.id}"/>  
+                        </p:selectOneMenu> 
+
+                        <p:panel visible="fase">
+                            <p:outputLabel value="Id" for="a2" />
+                            <p:inputText id="a2" value="#{archivebean.archivageselecr.id}"  />
+
+
+                            <p:outputLabel value="N°_Compte" for="archive" />
+                            <p:inputText id="archive" value="#{archivebean.archivageselecr.compte}"  />
+
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:commandButton action="#{archivebean.sortie}" value="#{msg.Save}" update="display,:ArchivageListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ArchivageEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="ArchivageEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

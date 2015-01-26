@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd" 
+       xmlns:context="http://www.springframework.org/schema/context" >
+    
+    <!-- couches applicatives -->
+   
+    <bean id="CreditScolairedao" class="com.lateu.projet.afriland.daoImpl.CreditScolairedaoImpl"/>
+    <bean id="Userdao" class="com.lateu.projet.afriland.daoImpl.UserdaoImpl"/>
+    <bean id="Autoritedao" class="com.lateu.projet.afriland.daoImpl.AutoritedaoImpl"/>
+    <bean id="Servicedao" class="com.lateu.projet.afriland.daoImpl.ServicedaoImpl"/>
+    <bean id="Archivagedao" class="com.lateu.projet.afriland.daoImpl.ArchivagedaoImpl"/>
+    <bean id="Mouvementdao" class="com.lateu.projet.afriland.daoImpl.MouvementdaoImpl"/>
+    <bean id="Poubelledao" class="com.lateu.projet.afriland.daoImpl.PoubelledaoImpl"/>
+    <bean id="Controldao" class="com.lateu.projet.afriland.daoImpl.ControldaoImpl"/>
+    <bean id="Dossierdao" class="com.lateu.projet.afriland.daoImpl.DossierdaoImpl"/>
+    <bean id="Anomaliedao" class="com.lateu.projet.afriland.daoImpl.AnomaliedaoImpl"/>
+    <bean id="Agencedao" class="com.lateu.projet.afriland.daoImpl.AgencedaoImpl"/>
+    <bean id="DossierCreditdao" class="com.lateu.projet.afriland.daoImpl.DossierCreditdaoImpl"/>
+     
+      
+    <bean id="ServiceAgence" class="com.lateu.projet.afriland.metierImpl.ServiceAgenceImpl">
+        <property name="agencedao" ref="Agencedao"/>
+    
+    </bean>
+      
+    <bean id="ServiceCreditScolaire" class="com.lateu.projet.afriland.metierImpl.ServiceCreditScolaireImpl">
+        <property name="scolairedao" ref="CreditScolairedao"/>
+        <property name="userdao" ref="Userdao"/>
+    </bean>
+
+
+
+    <bean id="ServiceUtilisateur" class="com.lateu.projet.afriland.metierImpl.ServiceUtilisateurImpl">
+        <property name="autoritedao" ref="Autoritedao"/>
+        <property name="userdao" ref="Userdao"/>
+        <property name="poubelledao" ref="Poubelledao"/>
+        <property name="servicedao" ref="Servicedao"/>
+    </bean>
+
+    <bean id="ServiceMouvement" class="com.lateu.projet.afriland.metierImpl.ServiceMouvementImpl">
+        <property name="mouvementdao" ref="Mouvementdao"/>
+        <property name="servicedao" ref="Servicedao"/>
+        <property name="archivagedao" ref="Archivagedao"/>
+        <property name="userdao" ref="Userdao"/>
+    </bean>
+
+
+    <bean id="ServiceArchivage" class="com.lateu.projet.afriland.metierImpl.ServiceArchivageImpl">
+        <property name="archivagedao" ref="Archivagedao"/>
+        <property name="agencedao" ref="Agencedao"/>
+    </bean>
+
+
+
+    <bean id="ServiceService" class="com.lateu.projet.afriland.metierImpl.ServiceServiceImpl">
+        <property name="servicedao" ref="Servicedao"/>
+    </bean>
+
+
+    <bean id="ServicePoubelle" class="com.lateu.projet.afriland.metierImpl.ServicePoubelleImpl">
+        <property name="poubelledao" ref="Poubelledao"/>
+        <property name="userdao" ref="Userdao"/>
+    </bean>
+
+
+    <bean id="ServiceControl" class="com.lateu.projet.afriland.metierImpl.ServiceControlImpl">
+        <property name="userdao" ref="Userdao"/>
+        <property name="dossierdao" ref="Dossierdao"/>
+        <property name="archivagedao" ref="Archivagedao"/>
+        <property name="controldao" ref="Controldao"/>
+        <property name="agencedao" ref="Agencedao"/>
+    </bean>
+
+
+
+    <bean id="ServiceDossier" class="com.lateu.projet.afriland.metierImpl.ServiceDossierImpl">
+        <property name="anomaliedao" ref="Anomaliedao"/>
+        <property name="dossierdao" ref="Dossierdao"/>
+        <property name="userdao" ref="Userdao"/>
+        <property name="archivagedao" ref="Archivagedao"/>
+        <property name="agencedao" ref="Agencedao"/>
+    </bean>
+
+ <bean id="ServiceDossierCredit" class="com.lateu.projet.afriland.metierImpl.ServiceDossierCreditImpl">
+        <property name="creditdao" ref="DossierCreditdao"/>
+       <property name="archivagedao" ref="Archivagedao"/>
+    </bean>
+
+    <!-- la source de donnéees DBCP -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+        <property name="username" value="root"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="password" value="07v120!"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/SuiDoR"/>
+      
+    
+    </bean>
+    
+    <!-- couche de persistance JPA -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+        
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                
+                <property name="showSql" value="true" />  
+              
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                <property name="generateDdl" value="true" />
+            </bean>
+        </property>
+
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+
+        </property>
+    </bean>
+    <!-- le gestionnaire de transactions -->
+    <tx:annotation-driven transaction-manager="txManager" />
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <!-- traduction des exceptions -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    <!-- annotations de persistance -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    
+</beans>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{changeLocale.locale}">
+        <ui:composition>
+
+            <table  align="right" class="degrade"  bgcolor="#036fab" width="90%" style="margin-left: 5%;margin-right: 5%" ><tr><td>
+                        <h:form id="formulaire">
+                            <h:panelGrid columns="3" style="height: 55px; margin-left: 80%;  " >
+                                <h:commandLink value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" style="background-color: chartreuse;font-size: 15px"/>
+                                <h:commandLink value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" style="background-color: chartreuse;font-size: 15px"/>
+                                <p:menubar style=" margin-left: 15%;width: 100px;height: 18px">  
+
+                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" />
+                                </p:menubar> 
+                            </h:panelGrid>
+
+                        </h:form>
+                    </td></tr>
+                <tr><td>
+                        <h:form id="menuForm">
+                            <p:menubar style="height: 22px; margin-left: 25%;margin-right: 25%; border-radius: 20px;font-size: 19px">  
+                                <p:menuitem value="#{msg['welcome.welcome']}" url="#" icon="ui-icon-home" style="font-size: 18px;margin-left: 12px"/>
+                                <p:menuitem value="#{msg['nouveauDossier']}" url="/vues/CreditScolaire/Consultant/indexCreditScolaire.xhtml" style="font-size: 18px"/> 
+
+                                <p:submenu   label="#{msg.stat}" >  
+                                    <p:menuitem value="#{msg.statGraphique}" url="/vues/CreditScolaire/Consultant/statistiqueCredit.xhtml"  style="font-size: 18px"/> 
+                                    <p:menuitem value="#{msg['statistiques']}" url="/vues/CreditScolaire/Consultant/rapportCreditScolaire.xhtml" style="font-size: 18px" /> 
+                                </p:submenu> 
+
+
+                            </p:menubar>  
+                            <h3>Bienvenu  : ${username}</h3>
+                        </h:form>
+                    </td></tr>
+            </table>
+        </ui:composition>
+    </f:view>
+</html>
+

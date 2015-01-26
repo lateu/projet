@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurCreateDlg" widgetVar="UtilisateurCreateDialog" modal="true" resizable="false" appendToBody="true" header="Enregistrement d'un Utilisateur">
+
+            <h:form id="UtilisateurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurbean.utilisateurSelect != null}">
+
+                        <p:outputLabel value="nom" for="nom" />
+                        <p:inputText id="nom" value="#{utilisateurbean.utilisateurSelect.nom}" required="true" requiredMessage=" information obligatoire" />
+
+                        <p:outputLabel value="username" for="username" />
+                        <p:inputText id="username" value="#{utilisateurbean.utilisateurSelect.username}" title="#{myBundle.CreateUtilisateurTitle_username}" required="true" requiredMessage="le nom d'utilisateur est obligatoire"/>
+
+                        
+                        <p:outputLabel value="Code Agence" for="cd" />
+                        <p:inputText id="cd" value="#{utilisateurbean.codeAgence}"  required="true" requiredMessage=" information obligatoire"/>
+
+
+
+                        <h:outputLabel value="Service" for="classe" />
+                        <p:selectOneMenu id="classe" value="#{utilisateurbean.nomService}"   >
+                            <f:selectItems value="#{utilisateurbean.listeServiceSelect}" /> 
+                        </p:selectOneMenu> 
+
+                        <h:outputLabel value="role" for="status" style="width: 100%"/>
+                        <p:selectOneMenu id="status" value="#{utilisateurbean.role}"  >
+                            <f:selectItem itemValue="#" itemLabel="choisir" /> 
+                            <f:selectItem itemValue="ROLE_CONS" itemLabel="Consultant" /> 
+                            <f:selectItem itemValue="ROLE_CA" itemLabel="Chef-Agence" /> 
+                            <f:selectItem itemValue="ROLE_JR" itemLabel="Juriste" />
+                            <f:selectItem itemValue="ROLE_INF" itemLabel="Informaticien" />
+                            <f:selectItem itemValue="ROLE_AR" itemLabel="Archiviste" /> 
+                            <f:selectItem itemValue="ROLE_ADMIN" itemLabel="Administrateur" /> 
+                            <f:selectItem itemValue="ROLE_CDS" itemLabel="Agent-Credit-Scolaire" /> 
+                             <f:selectItem itemValue="ROLE_CDP" itemLabel="Agent-Credit-Particulier" /> 
+                        </p:selectOneMenu> 
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurbean.creerUser}" value="#{msg.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UtilisateurCreateDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="UtilisateurCreateDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

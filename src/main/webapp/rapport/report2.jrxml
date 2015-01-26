@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="49c3d091-0a57-45cd-bd1a-aebf9dbbbbc0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="122"/>
+	<field name="nombre" class="java.lang.Integer"/>
+	<field name="demande" class="java.lang.Integer"/>
+	<field name="accord" class="java.lang.Integer"/>
+	<field name="temps" class="java.lang.Integer"/>
+	<field name="assurance" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="48" splitType="Stretch">
+			<image>
+				<reportElement x="189" y="0" width="199" height="42" uuid="04f95b9a-1ed2-4273-956f-271d4354dd0e"/>
+				<imageExpression><![CDATA["logoAfriland.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="72" y="0" width="404" height="31" uuid="78802a71-f3b8-4c17-8618-15d3fb0f5c62"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[      Statistique sur le credit Scolaire]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="256" y="31" width="100" height="20" uuid="39e054e7-37a0-4146-821c-ec129f274e39"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="156" y="31" width="100" height="20" uuid="4d5a605f-e736-45a4-a1f6-b619860efe4e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[rapport du]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="0" width="112" height="32" uuid="62a665a7-f415-4000-93e4-aa3fa4dcd258"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[nombre dossiers recus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="0" width="119" height="20" uuid="a3d78d9a-9aaa-4783-b599-dd6d88e18945"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Volume Demande]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="2" width="119" height="20" uuid="d7792643-50c6-4181-bbf3-a9d46b7016af"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[volume  accordé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="2" width="96" height="32" uuid="3a896134-ad10-4bb2-97d3-51caa1d25f99"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[traité en moins de 48h]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="2" width="67" height="32" uuid="c6a3a04c-ac9a-4c2f-b194-9f43b08c76a8"/>
+				<text><![CDATA[Cont-Assurance]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="15" y="0" width="100" height="20" uuid="2da1f356-f054-4003-86e9-1e40542345bc"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="0" width="100" height="20" uuid="2e816c8c-9fc2-4512-81f3-1afee351923d"/>
+				<textFieldExpression><![CDATA[$F{demande}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="100" height="20" uuid="55c16896-5ee6-4890-b813-16ac87c311b7"/>
+				<textFieldExpression><![CDATA[$F{accord}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="96" height="20" uuid="8e969ec0-5518-41dc-98ae-2a15179a972e"/>
+				<textFieldExpression><![CDATA[$F{temps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="100" height="20" uuid="f8957a75-44ad-4684-af60-58db6cc28396"/>
+				<textFieldExpression><![CDATA[$F{assurance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="156" y="0" width="376" height="20" uuid="03bf3c3d-3289-4b67-a10a-2e6cbe9b3c7f"/>
+				<text><![CDATA[fait    à ............................................le................../...................../..............]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="256" y="34" width="100" height="20" uuid="e841ca25-29bc-4437-b3d6-6bbe2dcb11f8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="369" y="34" width="100" height="20" uuid="7f4a576a-3d17-437a-93a8-ee0eaf697e17"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="216" y="34" width="40" height="20" uuid="560f13c9-c940-4f10-8578-aa0338763633"/>
+				<text><![CDATA[édité le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="34" width="13" height="20" uuid="942eeec1-524e-4608-8890-fc181455e425"/>
+				<text><![CDATA[à]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

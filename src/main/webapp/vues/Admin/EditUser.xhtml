@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurEditDlg" widgetVar="UtilisateurEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditUtilisateurTitle}">
+
+            <h:form id="UtilisateurEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{utilisateurbean.utilisateurSelect != null}">
+
+                        <p:outputLabel value="accountState" for="accountState" />
+                        <p:selectOneRadio id="accountState" value="#{utilisateurbean.utilisateurSelect.accountState}"  required="true" requiredMessage="vous devez faire un choix" >  
+                            <f:selectItem itemLabel="Bloquer" itemValue="0" />  
+                            <f:selectItem itemLabel="Activer" itemValue="1" />
+
+                        </p:selectOneRadio>   
+
+
+
+                        <h:outputLabel value="Service" for="classe" />
+                        <p:selectOneMenu id="classe" value="#{utilisateurbean.nomService}"   >
+                            <f:selectItems value="#{utilisateurbean.listeServiceSelect}" /> 
+                        </p:selectOneMenu> 
+
+                        <h:outputLabel value="role" for="status" style="width: 100%"/>
+                        <p:selectOneMenu id="status" value="#{utilisateurbean.role}"  >
+                            <f:selectItem itemValue="#" itemLabel="choisir" /> 
+                            <f:selectItem itemValue="ROLE_CONS" itemLabel="Consultant" /> 
+                            <f:selectItem itemValue="ROLE_CA" itemLabel="Chef-Agence" /> 
+                            <f:selectItem itemValue="ROLE_JR" itemLabel="Juriste" />
+                            <f:selectItem itemValue="ROLE_INF" itemLabel="Informaticien" />
+                            <f:selectItem itemValue="ROLE_AR" itemLabel="Archiviste" /> 
+                            <f:selectItem itemValue="ROLE_ADMIN" itemLabel="Administrateur" /> 
+                            <f:selectItem itemValue="ROLE_CDS" itemLabel="Agent-Credit-Scolaire" /> 
+                        </p:selectOneMenu>
+
+                        <p:panel visible="false">
+
+
+                            <h:outputLabel value="id" for="id" />
+                            <h:inputText id="id" value="#{utilisateurbean.utilisateurSelect.id}" />
+
+                            <p:outputLabel value="nom" for="nom" />
+                            <p:inputText id="nom" value="#{utilisateurbean.utilisateurSelect.nom}" title="#{myBundle.EditUtilisateurTitle_nom}" />
+
+
+
+                            <p:outputLabel value="username" for="username" />
+                            <p:inputText id="username" value="#{utilisateurbean.utilisateurSelect.username}" title="#{myBundle.EditUtilisateurTitle_username}" required="true" requiredMessage="#{myBundle.EditUtilisateurRequiredMessage_username}"/>
+                    
+                        <!--
+                                                <p:outputLabel value=" Agence" for="contact" />
+                                                <p:inputText id="contact" value="#{utilisateurbean.utilisateurSelect.service.agence.code}" title="#{myBundle.EditUtilisateurTitle_contact}" />-->
+
+
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurbean.updateUser}" value="#{msg.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UtilisateurEditDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="UtilisateurEditDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

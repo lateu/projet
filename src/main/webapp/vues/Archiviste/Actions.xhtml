@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+
+        <ui:composition template="Template.xhtml">
+            <ui:define name="body" >
+
+                <p:panel style="margin-left: 20%;margin-right: 20%;margin-top: 2%" header="operations effectuées sur un dossier juridique">
+                    <h:form >  
+                        <p:dataTable var="car" value="#{dossierCreatinbean.controls}" 
+                                      paginator="true"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30"
+                                     >  
+
+                            <p:column sortBy="#{item.agence.code}" filterBy="#{car.dossier.client}">
+                                <f:facet name="header">
+                                    <h:outputText value="client"/>
+                                </f:facet>
+                                <h:outputText value="#{car.dossier.client}"/>
+                            </p:column>
+
+
+                             <p:column sortBy="#{car.dossier.compte}" filterBy="#{car.dossier.compte}">
+                                <f:facet name="header">
+                                    <h:outputText value="Compte"/>
+                                </f:facet>
+                                <h:outputText value="#{car.dossier.compte}"/>
+                            </p:column>
+                            
+                            
+                             <p:column sortBy="#{car.utilisateur.username}" filterBy="#{car.utilisateur.username}">
+                                <f:facet name="header">
+                                    <h:outputText value="Controlleur"/>
+                                </f:facet>
+                                <h:outputText value="#{car.utilisateur.username}"/>
+                            </p:column>
+                            
+                         
+                             <p:column sortBy="#{car.observation}" filterBy="#{car.observation}">
+                                <f:facet name="header">
+                                    <h:outputText value="Observation"/>
+                                </f:facet>
+                                <h:outputText value="#{car.observation}"/>
+                            </p:column>
+                            
+
+                             <p:column sortBy="#{car.dateControl}" filterBy="#{car.dateControl}">
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText value="#{car.dateControl}"/>
+                            </p:column>
+     
+                        </p:dataTable>  
+                    </h:form> 
+                </p:panel>
+            </ui:define>
+
+
+        </ui:composition>
+
+</html>

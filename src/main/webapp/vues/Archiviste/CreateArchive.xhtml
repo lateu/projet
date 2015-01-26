@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArchivageCreateDlg" widgetVar="ArchivageCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateArchivageTitle}">
+
+            <h:form id="ArchivageCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{archivebean.archivageselecr!=null}">
+
+                        <p:outputLabel value="Compte" for="account" />
+                        <p:inputText id="account" value="#{archivebean.archivageselecr.compte}"  />
+
+                        <p:outputLabel value="Client" for="intitule" />
+                        <p:inputText id="intitule" value="#{archivebean.archivageselecr.client}" title="{myBundle.CreateArchivageTitle_intitule}" />
+
+                        
+                        
+                        <h:outputLabel value="TypeDossier" for="status" style="width: 100%"/>
+                        <p:selectOneMenu id="status" value="#{archivebean.archivageselecr.typeDocument}"  >
+                            <f:selectItem itemValue="#" itemLabel="choisir" /> 
+                            <f:selectItem itemValue="dossier-credit" itemLabel="Credit" /> 
+                            <f:selectItem itemValue="dossier-compte" itemLabel="Creation-Compte" /> 
+                        </p:selectOneMenu>
+                        
+                            
+                    </p:panelGrid>
+                    <p:commandButton action="#{archivebean.create()}" value="#{msg.Save}" update="display,:ArchivageListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ArchivageCreateDialog);"/>
+                    <p:commandButton value="#{msg.Cancel}" onclick="ArchivageCreateDialog.hide();"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
