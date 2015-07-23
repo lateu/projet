@@ -223,14 +223,11 @@
             <version>5.5.0</version>
             <type>jar</type>
         </dependency>
-        <!--        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.0.1</version>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>-->
-      
+         <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>metroui</artifactId>  
+            <version>1.0.10</version>  
+        </dependency>
     </dependencies>
 
     <build>

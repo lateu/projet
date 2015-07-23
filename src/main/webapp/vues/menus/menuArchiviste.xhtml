@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{changeLocale.locale}">
+        <ui:composition>
+            <table  align="right" class="degrade"  bgcolor="#AFAFAF" width="100%" style="margin-left: 0%;margin-right: 0%" >
+                <tr>
+                    <td width="15%"><p:graphicImage value="/resources/images/logo.PNG"   style="width:200px;height: 80px;"/></td> 
+
+                    <td width="65">
+                        <h:form id="menuForm">
+                            <p:menubar style="height: 25px; margin-left: 15%;margin-right: 6%; border-radius: 20px;font-size: 120px">  
+                                <p:submenu   label="Stock" style="font-weight: bold"> 
+                                    <p:menuitem value="Liste" url="/vues/Archiviste/indexArchive.xhtml" style="font-size: 18px"/> 
+
+                                </p:submenu>
+                                <p:submenu   label="Control" style="font-weight: bold">  
+                                    <p:menuitem value="Dossier-Compte" url="/vues/Archiviste/indexDossier.xhtml"  style="font-size: 18px"/> 
+                                    <p:menuitem value="Dossier-Credit" url="/vues/Archiviste/indexDossierCredit.xhtml" style="font-size: 18px" /> 
+                                </p:submenu>
+
+                                <p:submenu   label="trace-dossiers" style="font-weight: bold">  
+                                    <p:menuitem value="Dossier-Compte" url="/vues/Archiviste/TraceDossierJuridique.xhtml"   style="font-size: 18px"/> 
+                                    <p:menuitem value="Dossier-Credit" url="/vues/Archiviste/TraceDossierCredit.xhtml" style="font-size: 18px" /> 
+                                </p:submenu>
+                                <p:submenu   label="Historique" style="font-weight: bold"> 
+                                    <p:menuitem value="Liste" url="/vues/Archiviste/createMouvement.xhtml"  style="font-size: 18px"/> 
+                                </p:submenu>
+                                <p:submenu   label="Operations" style="font-weight: bold">
+                                    <p:menuitem value="Liste" url="/vues/Archiviste/Actions.xhtml"  style="font-size: 18px"/> 
+                                </p:submenu>
+                                <p:submenu   label="Anomalie" style="font-weight: bold"> 
+                                    <p:menuitem value="Liste" styleClass="#{dossierCreatinbean.AnomalieWarning()}" url="/vues/Archiviste/indexAnomalie.xhtml"  style="font-size: 18px"/> 
+                                </p:submenu>
+                                <p:submenu   label="Options" icon="ui-icon-wrench"  >  
+                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" icon="ui-icon-close"/>
+                                    <p:menuitem  value="InitCompte" url="/vues/Archiviste/InitPassword.xhtml"  icon="ui-icon-refresh" />
+                                    <p:menuitem  value="Personnalise" url="/vues/Archiviste/Personalise.xhtml" style=" font-size: 15px;" icon="ui-icon-newwin"/>
+                                </p:submenu> 
+                            </p:menubar>  
+
+                        </h:form>
+                    </td>
+                    <td width="15%">
+                        <h:form id="formulaire">
+                            <h:panelGrid columns="3" style="height: 50px; margin-left: 20%;  " >
+                                <h:commandButton value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" image="/resources/images/fr.png"  style="font-size: 15px"/>
+                                <h:commandButton value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" image="/resources/images/en.png"  style="font-size: 15px"/> 
+
+                            </h:panelGrid>
+
+                            <h:outputLabel value="connecté:   #{loginController.conncte}"  style="margin-left: 40%;margin-right: 5%;font-weight: bold"/>  
+
+
+                        </h:form>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </ui:composition>
+    </f:view>
+
+</html>
+

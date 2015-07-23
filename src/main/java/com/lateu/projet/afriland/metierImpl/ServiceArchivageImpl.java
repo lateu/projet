@@ -9,7 +9,6 @@ import com.lateu.projet.afriland.dao.Agencedao;
 import com.lateu.projet.afriland.dao.Archivagedao;
 import com.lateu.projet.afriland.entities.Agence;
 import com.lateu.projet.afriland.entities.Archivage;
-import com.lateu.projet.afriland.entities.DossierCredit;
 import com.lateu.projet.afriland.metier.ServiceArchivage;
 import java.util.List;
 import java.util.logging.Level;

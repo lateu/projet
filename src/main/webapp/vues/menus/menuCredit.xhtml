@@ -10,16 +10,15 @@
             <table  align="right" class="degrade"  bgcolor=" #AFAFAF" width="100%"  >
 
                 <tr>
-                    <td width="15%"> <img src="../../images/logo.PNG"  width="180" height="80" alt="logo" /></td> 
+                   <td width="15%"><p:graphicImage value="/resources/images/logo.PNG"   style="width:200px;height: 80px;"/></td>  
                     <td width="65%">
                         <h:form id="menuForm">
                             <p:menubar style="height: 25px; margin-left: 40%;margin-right: 40%; border-radius: 20px;font-size: 120px">  
-<!--
-                                <p:menuitem value="Reclamation"  url="#"  style="font-size: 18px"/> 
-
-
-                                <p:menuitem  value="Nouveau_Dossier" url="/vues/Accueil/index.xhtml"  style="font-size: 18px"/>
--->
+                     <p:submenu   label="Options" icon="ui-icon-wrench" >  
+                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" icon="ui-icon-close"/>
+                                    <p:menuitem  value="InitCompte" url="/vues/DossierCredit/InitPassword.xhtml"  icon="ui-icon-refresh" />
+                                    <p:menuitem  value="Personnalise" url="/vues/DossierCredit/Personalise.xhtml" style=" font-size: 15px;" icon="ui-icon-newwin"/>
+                                </p:submenu> 
                             </p:menubar>  
 
                         </h:form>
@@ -27,14 +26,9 @@
                     <td width="25%">
                         <h:form id="formulaire">
                             <h:panelGrid columns="3" style="height: 50px; margin-left: 2%;  " >
-                                <h:commandLink value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" style="background-color: chartreuse;font-size: 15px"/>
-                                <h:commandLink value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" style="background-color: chartreuse;font-size: 15px"/>
-                                <p:menubar style=" margin-left: 15%;width: 100px;height: 18px">  
-
-                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" />
-                                    <p:menuitem  value="Personnalise" url="/vues/Accueil/Personalise.xhtml" style=" font-size: 15px;background-color: aqua" />
-
-                                </p:menubar> 
+                                 <h:commandButton value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" image="/resources/images/fr.png"  style="font-size: 15px"/>
+                                <h:commandButton value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" image="/resources/images/en.png"  style="font-size: 15px"/> 
+                           
                             </h:panelGrid>
 
                             <h:outputLabel value="connecté:   #{loginController.conncte}"  style="margin-left: 55%;margin-right: 5%;font-weight: bold"/>  

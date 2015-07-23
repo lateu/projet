@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{changeLocale.locale}">
+        <ui:composition>
+            <table  align="right" class="degrade"  bgcolor="#AFAFAF" width="100%"  >
+
+
+                <tr>
+                    <td width="15%">
+                        <p:graphicImage value="/resources/images/logo.PNG"   style="width:200px;height: 80px;"/>
+                    </td>
+                    <td width="65%">
+                        <h:form id="menuForm">
+                            <p:menubar style="height: 25px; margin-left: 1%;margin-right: 1%; border-radius: 20px;font-size: 120px">  
+                                <p:submenu   label="#{msg['utilisateur']}" > 
+                                    <p:menuitem value="#{msg['nouveau']}" url="/vues/Admin/indexUser.xhtml" style="font-size: 18px"/> 
+                                </p:submenu>
+
+                                <p:submenu   label="Agence" > 
+                                    <p:menuitem value="#{msg['nouveau']}" url="/vues/Admin/indexAgence.xhtml"  style="font-size: 18px"/> 
+                                </p:submenu>
+                                <p:submenu   label="Service" > 
+                                    <p:menuitem value="#{msg['nouveau']}" url="/vues/Admin/indexService.xhtml"  style="font-size: 18px"/> 
+                                </p:submenu>
+
+                                <p:submenu   label="#{msg['creditScolaire']}" >  
+                                    <p:menuitem value="#{msg['nouveau']}" url="/vues/Admin/indexCreditScolaire.xhtml"  style="font-size: 18px"/>
+                                    <p:menuitem value="Liste" url="/vues/Admin/ListeCreditScolaire.xhtml" style="font-size: 18px"/> 
+                                </p:submenu>
+
+
+
+                                <p:submenu   label="#{msg['importer']}"  >  
+                                    <p:submenu   label="Credit-Particulier" > 
+                                        <p:menuitem value="Dossier-particulier(txt)" url="/vues/Admin/importationDossierCredit.xhtml"  /> 
+                                    </p:submenu>
+                                    
+                                    <p:submenu   label="Ouverture-Compte" > 
+                                        <p:menuitem value="Control(txt)" url="/vues/Admin/importationControl.xhtml" /> 
+                                        <p:menuitem value="Controllé(txt)" url="/vues/Admin/importationArchives.xhtml"  /> 
+                                    </p:submenu>
+
+                                </p:submenu> 
+
+                                <p:submenu   label="#{msg['stat']}" >  
+                                    <p:submenu   label="#{msg['creditScolaire']}" > 
+                                        <p:menuitem value="#{msg['statistiques']}" url="/vues/Admin/rapportCreditScolaire.xhtml" style="font-size: 18px"/> 
+                                        <p:menuitem value="#{msg['statGraphique']}" url="/vues/Admin/statistiqueCredit.xhtml" style="font-size: 18px"/> 
+                                    </p:submenu>
+                                    <p:submenu   label="Credit-Particulier" > 
+                                    </p:submenu>
+                                    <p:submenu   label="Archives" > 
+                                    </p:submenu>
+                                </p:submenu>
+
+                                <p:submenu   label="#{msg['annulation']}" >  
+
+                                    <p:menuitem value="Dossier-credit" url="/vues/Admin/rappel.xhtml"  /> 
+
+                                    <p:menuitem value="Dossier-juridique" url="/vues/Admin/rappelJuridique.xhtml"  /> 
+
+                                </p:submenu> 
+
+                                <p:submenu   label="Options" icon="ui-icon-wrench" >  
+                                    <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" icon="ui-icon-close"/>
+                                    <p:menuitem  value="#{msg['initialiser']}" url="/vues/Admin/InitPassword.xhtml"  icon="ui-icon-refresh" />
+                                    <p:menuitem  value="#{msg['personaliser']}" url="/vues/Admin/Personalise.xhtml" style=" font-size: 15px;" icon="ui-icon-newwin"/>
+                                </p:submenu> 
+
+
+                            </p:menubar>  
+
+                        </h:form>
+                    </td>
+                    <td width="20%">
+                        <h:form id="formulaire">
+                            <h:panelGrid columns="3" style="height: 50px; margin-left: 60%;  " >
+                                <h:commandButton value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" image="/resources/images/fr.png"  style="font-size: 15px"/>
+                                <h:commandButton value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" image="/resources/images/en.png"  style="font-size: 15px"/> 
+                            </h:panelGrid>
+                            <h:outputLabel value="#{msg['connecte']}:   #{loginController.conncte}"  style="margin-left: 40%;margin-right: 5%;font-weight: bold"/>  
+                        </h:form>
+
+                    </td>
+                </tr>
+            </table>
+        </ui:composition>
+    </f:view>
+</html>
+

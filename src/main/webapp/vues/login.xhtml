@@ -6,7 +6,7 @@
     <head>
         <!--       <h:outputStylesheet library="css" name="pfcrud.css"/>
                 -->
-        <title>connexion Suivi-Dossier</title>
+        <title>connexion</title>
         <style>
             .errorblock {
                 color: #ff0000;
@@ -21,8 +21,8 @@
     </head>
     <body onload='document.f.j_username.focus();' bgcolor="#AFAFAF" >
         <div class="body"></div>
-        <a href="images/Auteur.pdf" style="margin-left: 90%;margin-right: 5%;">A propos</a>
-        <h3 style="margin-left: 43%;margin-right: 40%;">AUTHENTIFICATION  </h3>
+        <a href="/resources/images/Auteur.pdf" style="margin-left: 90%;margin-right: 5%;">A propos</a>
+        <h3 style="margin-left: 43%;margin-right: 40%; margin-top: 7%">AUTHENTIFICATION  </h3>
 
         <c:if test="${not empty error}">
             <div class="errorblock" style="margin-left: 35%;margin-right: 30%;">
@@ -38,8 +38,7 @@
                 
                 
                 <tr>
-                    <td colspan="2"> <img src="images/logo.PNG" alt="rien" width="100%" height="75" /></td>
-                   
+                    <td colspan="2"> <img src="resources/images/logo.PNG" alt="rien" width="100%" height="75" /></td>
                 </tr>
                 
                 
@@ -66,7 +65,7 @@
 
             </table>
             
-            <div><img src="images/titre.PNG" alt="rien" width="50%" height="50" style="margin-left: 25%;margin-right: 25%;margin-top: 10%" /></div>
+            <div><img src="resources/images/titre.PNG" alt="rien" width="50%" height="50" style="margin-left: 25%;margin-right: 25%;margin-top: 10%" /></div>
            
         </form>
       
