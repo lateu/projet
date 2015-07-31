@@ -42,4 +42,17 @@ public class AgencedaoImpl extends GenericDao<Agence, Long> implements Agencedao
         return null;
     }
     
+    
+      @Override
+    public Agence findByUserId(Long userId) {
+        try {
+            return (Agence) getManager().createNamedQuery("findAgenceByUserId")
+                                  .setParameter("userId", userId)
+                                  .getSingleResult();
+        } catch (DataAccessException ex) {
+            Logger.getLogger(AgencedaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
 }

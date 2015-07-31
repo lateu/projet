@@ -22,11 +22,11 @@ public interface ServiceService {
     
     public List<Service> findAll();
 
-    public List<Service> TestService(String s);
+    public List<Service> TestService(String s, String codeAgence);
 
     public List<Service> FindServiceByagence(String s);
 
-    public Service findByNomService(String nom);
+    public Service findByNomService(String nom,String codeAgence);
 
     public Service findById(Long id);
 }

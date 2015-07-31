@@ -39,9 +39,9 @@ public class TestService {
          Date d=new  Date();
        //  d = new SimpleDateFormat("HH:mm").parse("07:30");
        
-        Agence ag=new Agence("00008", "garoua");
-          serviceAgence.create(ag);
-     //   System.out.println(""+serviceUtilisateur.findUserByAgence("00005"));
+       // Agence ag=new Agence("00008", "garoua");
+         // serviceAgence.create(ag);
+      //System.out.println(""+sd.findForCA().size());
      
         //CreditScolaire c=new CreditScolaire("0458", "lateu richard", d, d, "en cours", "malaika", null, 0.5);
       //System.out.println("="+sd.findForAccueil());

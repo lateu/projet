@@ -80,22 +80,22 @@ public class ServiceControlImpl implements ServiceControl {
             cn.setDateControl(new Date());
             cn.setObservation("ok");
             if (ut.getAutorite().equals("ROLE_CA")) {
-                d.setPas1("ok");
-                d.setPas2("En cours");
-                controldao.create(cn);
-                dossierdao.update(d);
-            } else if (ut.getAutorite().equals("ROLE_JR")) {
                 d.setPas2("ok");
                 d.setPas3("En cours");
                 controldao.create(cn);
                 dossierdao.update(d);
-            } else if (ut.getAutorite().equals("ROLE_INF")) {
+            } else if (ut.getAutorite().equals("ROLE_JR")) {
                 d.setPas3("ok");
                 d.setPas4("En cours");
                 controldao.create(cn);
                 dossierdao.update(d);
-            } else if (ut.getAutorite().equals("ROLE_AR")) {
+            } else if (ut.getAutorite().equals("ROLE_INF")) {
                 d.setPas4("ok");
+                d.setPas5("En cours");
+                controldao.create(cn);
+                dossierdao.update(d);
+            } else if (ut.getAutorite().equals("ROLE_AR")) {
+                d.setPas5("ok");
                 controldao.create(cn);
                 dossierdao.update(d);
                 archivage.setClient(d.getClient());

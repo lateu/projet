@@ -47,7 +47,8 @@ public class Servicebean implements Serializable {
     
     
     public void createService() {
-        if ((serviceService.TestService(serviceselect.getNom())).isEmpty()) {
+        Agence ag=serviceAgence.findAgenceByUsername(name);
+        if ((serviceService.TestService(serviceselect.getNom(),ag.getCode())).isEmpty()) {
             // Agence agence=serviceAgence.findAgenceByUsername(name);
             int cpt = 0;
             Agence a = new Agence();

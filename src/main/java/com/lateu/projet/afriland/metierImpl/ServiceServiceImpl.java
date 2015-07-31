@@ -52,8 +52,8 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public Service findByNomService(String nom) {
-        return servicedao.findbyNom(nom);
+    public Service findByNomService(String nom,String codeAgence) {
+        return servicedao.findbyNom(nom,codeAgence);
     }
 
     @Override
@@ -66,8 +66,8 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public List<Service> TestService(String s) {
-        return servicedao.TestService(s);
+    public List<Service> TestService(String s,String codeAgence) {
+        return servicedao.TestService(s, codeAgence);
     }
 
     @Override

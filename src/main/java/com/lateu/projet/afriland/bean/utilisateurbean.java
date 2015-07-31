@@ -85,12 +85,13 @@ public class utilisateurbean implements Serializable {
                  * on verifie que le service existe reellement dans la dite agence
                  */
                 if (cpt == 1) {
-                    serviceUtilisateur.create(utilisateurSelect, role, NomService);
+                   serviceUtilisateur.create(utilisateurSelect, role, NomService,codeAgence);
+                   // System.out.println("=============Utilisateur Select "+utilisateurSelect.getUsername());
 
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "utilisateur " + utilisateurSelect.getUsername() + " ajouter avec succés", ""));
                  
                 } else {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Code agence Invalide", ""));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "combinaison service agence invalide", ""));
 
                 }
 

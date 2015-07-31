@@ -19,8 +19,8 @@ import java.util.List;
 public interface ServiceDossier {
 
     public void create(DossierCreationCompte d, Agence a);
-    
-     public void deletedossierJuridiqu(Long id);
+
+    public void deletedossierJuridiqu(Long id);
 
     public void createAnomalie(Anomalie a, Long idDossier);
 
@@ -34,13 +34,13 @@ public interface ServiceDossier {
 
     public List<DossierCreationCompte> findForAccueil();
 
-    public List<DossierCreationCompte> findForCA();
+    public List<DossierCreationCompte> findForCA(String codeAgence);
 
-    public List<DossierCreationCompte> findForCJ();
+    public List<DossierCreationCompte> findForCJ(String codeAgence);
 
-    public List<DossierCreationCompte> findForINF();
+    public List<DossierCreationCompte> findForINF(String codeAgence);
 
-    public List<DossierCreationCompte> findAR();
+    public List<DossierCreationCompte> findAR(String codeAgence);
 
     //public void createAnomalie(Anomalie an);
     public void corrigerAnomalie(Anomalie an, String userName);
@@ -48,6 +48,8 @@ public interface ServiceDossier {
     public List<DossierCreationCompte> findByDossierPeriode(Date debut, Date fin);
 
     public List<Anomalie> findAnomalie(String correcteur);
-   public void Circuler(DossierCreationCompte d);
-      public void Update(DossierCreationCompte d);
+
+    public void Circuler(DossierCreationCompte d);
+
+    public void Update(DossierCreationCompte d);
 }

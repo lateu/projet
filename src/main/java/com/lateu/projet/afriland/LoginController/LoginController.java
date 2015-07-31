@@ -29,6 +29,9 @@ public class LoginController implements Serializable{
     ApplicationContext ctx = new ClassPathXmlApplicationContext("Spring-conf.xml");
     private ServiceUtilisateur serUser = (ServiceUtilisateur) ctx.getBean("ServiceUtilisateur");
 
+    public LoginController() {
+    }
+
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
 
@@ -58,7 +61,7 @@ public class LoginController implements Serializable{
         }else if(client.getAutorite().equals("ROLE_CDP")){
          return "vues/DossierCredit/AccueilDossierCredit";
         }else{
-            return "vues/login";
+            return null;
         }
 
     }

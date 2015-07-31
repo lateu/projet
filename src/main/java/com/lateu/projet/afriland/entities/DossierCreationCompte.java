@@ -23,16 +23,16 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "findForCA", query = "select p from DossierCreationCompte p where (p.pas5='ok')AND(p.pas1='En cours') ORDER BY id DESC"),
-    @NamedQuery(name = "findForJR", query = "select p from DossierCreationCompte p where (p.pas1='ok')AND(p.pas2='En cours')"),
-    @NamedQuery(name = "findForINF", query = "select p from DossierCreationCompte p where (p.pas2='ok')AND(p.pas3='En cours')"),
-    @NamedQuery(name = "findForAR", query = "select p from DossierCreationCompte p where (p.pas3='ok')AND(p.pas4='En cours')"),
+    @NamedQuery(name = "findAccueil", query = "select p from DossierCreationCompte p where (p.pas1='En cours')"),
+    @NamedQuery(name = "findForCA", query = "select p from DossierCreationCompte p where (p.pas1='ok')AND(p.pas2='En cours')AND(p.agence.Code=:codeAgence) ORDER BY id DESC"),
+    @NamedQuery(name = "findForJR", query = "select p from DossierCreationCompte p where (p.pas2='ok')AND(p.pas3='En cours')AND(p.agence.Code=:codeAgence)"),
+    @NamedQuery(name = "findForINF", query = "select p from DossierCreationCompte p where (p.pas3='ok')AND(p.pas4='En cours')AND(p.agence.Code=:codeAgence)"),
+    @NamedQuery(name = "findForAR", query = "select p from DossierCreationCompte p where (p.pas4='ok')AND(p.pas5='En cours')AND(p.agence.Code=:codeAgence)"),
     @NamedQuery(name = "findAnomalieByAgence", query = "select p from Anomalie p,DossierCreationCompte d where (p.dossier.id=d.id)AND(d.agence.Code=:codeAgence)"),
     @NamedQuery(name = "findByPeriode", query = "select p from DossierCreationCompte p where p.dateCreation BETWEEN :debut and :fin "),
     @NamedQuery(name = "findAction", query = "select p from Control p where (p.dossier.compte=:compte)"),
-    @NamedQuery(name = "findForALL", query = "select p from DossierCreationCompte p  ORDER BY id DESC"),
-    @NamedQuery(name = "findAccueil", query = "select p from DossierCreationCompte p where (p.pas5='En cours')"),
- //   @NamedQuery(name = "annuler", query = "select p from DossierCreationCompte p where (p.pas5='En cours')"),
+    @NamedQuery(name = "findForALL", query = "select p from DossierCreationCompte p  ORDER BY id DESC"), 
+    //   @NamedQuery(name = "annuler", query = "select p from DossierCreationCompte p where (p.pas5='En cours')"),
 })
 public class DossierCreationCompte extends Dossier implements Serializable {
 

@@ -13,7 +13,7 @@ import java.util.List;
  * @author lateu
  */
 public interface Servicedao extends IDao<Service, Long>{
-    Service findbyNom(String s);
-   List<Service> TestService(String s);
+    Service findbyNom(String s,String c);
+   List<Service> TestService(String s,String c);
     List<Service> findServiceByAgence(String agence);
 }

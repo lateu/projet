@@ -85,9 +85,10 @@ return "createArchive";
         if (name != null) {
             Archivage ar = serviceArchivage.findById(archivageselecr.getId());
             System.out.println("===" + idPersonnel);
+            Agence ag=serviceAgence.findAgenceByUsername(name);
             ar.setPosition("absent");
             //   if (archivageselecr.getPosition() == 0) {
-            Service ser = serviceService.findByNomService(nomService);
+            Service ser = serviceService.findByNomService(nomService,ag.getCode());
             Mouvement m = new Mouvement();
             m.setService(ser);
             m.setArchive(ar);

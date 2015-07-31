@@ -16,13 +16,23 @@
                 margin: 16px;
             }
 
-
+body {
+                background: rgb(174, 188, 191); 
+                background: -moz-linear-gradient(top,  rgba(100,107,240,100) 0%, rgba(225,285,332,100) 100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(130,187,253,100)), color-stop(100%,rgba(225,285,332,100))); 
+                background: -webkit-linear-gradient(top,  rgba(130,187,253,100) 0%,rgba(225,285,332,100) 100%);
+                background: -o-linear-gradient(top,  rgba(130,187,253,1) 0%,rgba(225,285,332,100) 100%); 
+                background: -ms-linear-gradient(top,  rgba(130,187,253,100) 0%,rgba(225,285,332,100) 100%); 
+                min-height: 800px;
+                font-size: small;
+                margin: 0px 80px 0px 80px;
+            }
         </style>
+        
     </head>
-    <body onload='document.f.j_username.focus();' bgcolor="#AFAFAF" >
+    <body onload='document.f.j_username.focus();'>
         <div class="body"></div>
-        <a href="/resources/images/Auteur.pdf" style="margin-left: 90%;margin-right: 5%;">A propos</a>
-        <h3 style="margin-left: 43%;margin-right: 40%; margin-top: 7%">AUTHENTIFICATION  </h3>
+        <h3 style="margin-left: 43%;margin-right: 40%; margin-top: 15%">  </h3>
 
         <c:if test="${not empty error}">
             <div class="errorblock" style="margin-left: 35%;margin-right: 30%;">
@@ -34,11 +44,11 @@
         <form name='f' action="j_spring_security_check" method='POST' id="form1">
            
 
-            <table style="margin-left: 40%;margin-right: 35%; background-color: #4b5078;">
+            <table style="margin-left: 40%;margin-right: 35%; background-color: #ffEEEE;">
                 
                 
                 <tr>
-                    <td colspan="2"> <img src="resources/images/logo.PNG" alt="rien" width="100%" height="75" /></td>
+                    <td colspan="2"> <img src="resources/images/logo.PNG" alt="rien" width="100%" height="75" style="border-radius: 15%;"/></td>
                 </tr>
                 
                 
@@ -52,11 +62,7 @@
                     <td><input type='password' name='j_password' />
                     </td>
                 </tr>
-                <tr>
-                    <td >Remember me ?</td ><td >   <input type="checkbox" name="_spring_security_remember_me"/>
-
-                    </td>
-                </tr>
+               
                 <tr>
                     <td ></td ><td ><input name="submit" type="submit" value="connexion >>" /><input name="reset" type="reset" value="annuler" />
 
@@ -64,10 +70,7 @@
                 </tr>
 
             </table>
-            
-            <div><img src="resources/images/titre.PNG" alt="rien" width="50%" height="50" style="margin-left: 25%;margin-right: 25%;margin-top: 10%" /></div>
-           
-        </form>
+            </form>
       
     </body>
 </html>

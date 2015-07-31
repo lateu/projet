@@ -22,7 +22,7 @@ public interface ServiceUtilisateur {
 
     public UserAutority redirection(String usename);
 
-    public void create(Utilisateur utilisateur, String autority, String nomService);
+    public void create(Utilisateur utilisateur, String autority, String nomService,String codeAgence);
 
     public void update(Utilisateur u, String autority, String nomService);
 

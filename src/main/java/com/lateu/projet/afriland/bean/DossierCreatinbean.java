@@ -164,21 +164,22 @@ public class DossierCreatinbean {
     public List<DossierCreationCompte> getComptes() {
 
         role = serviceUtilisateur.redirection(name).getAutorite();
-        //   String codeAgence=serviceAgence.findAgenceByUsername(name).getCode();
+           String codeAgence=serviceAgence.findAgenceByUsername(name).getCode();
         if (role != null) {
             if (role.equals("ROLE_CA") == true) {
 
-                comptes = serviceDossier.findForCA();
+                comptes = serviceDossier.findForCA(codeAgence);
+                System.out.println("nombre de dossier CA"+comptes.size());
             } else if (role.equals("ROLE_JR") == true) {
 
-                comptes = serviceDossier.findForCJ();
+                comptes = serviceDossier.findForCJ(codeAgence);
 
             } else if (role.equals("ROLE_INF") == true) {
 
-                comptes = serviceDossier.findForINF();
+                comptes = serviceDossier.findForINF(codeAgence);
 
             } else if (role.equals("ROLE_AR") == true) {
-                comptes = serviceDossier.findAR();
+                comptes = serviceDossier.findAR(codeAgence);
 
             }
 
@@ -366,8 +367,8 @@ public class DossierCreatinbean {
         List<DossierCreationCompte> l = serviceDossier.findForAccueil();
         for (DossierCreationCompte d : l) {
 
-            d.setPas1("En cours");
-            d.setPas5("ok");
+            d.setPas1("ok");
+            d.setPas2("En cours");
             serviceDossier.Circuler(d);
         }
 
@@ -559,7 +560,7 @@ int cpt=0;
             }
         }
         
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " "+cpt+" lignes enregistrées", ""));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " "+cpt+" dossiers enregistrés", ""));
         scanner.close();
 
 

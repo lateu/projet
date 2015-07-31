@@ -23,7 +23,9 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findAgenceByCode", query = "SELECT a FROM Agence a WHERE a.Code = :codeAgence"),
-    @NamedQuery(name = "findAgenceByUsername", query = "SELECT a FROM Agence a ,Utilisateur u,Service s WHERE (a.id=s.agence.id)AND(u.service.id=s.id)AND(u.username=:username)"),})
+    @NamedQuery(name = "findAgenceByUsername", query = "SELECT a FROM Agence a ,Utilisateur u,Service s WHERE (a.id=s.agence.id)AND(u.service.id=s.id)AND(u.username=:username)"),
+    @NamedQuery(name = "findAgenceByUseId", query = "SELECT a FROM Agence a ,Utilisateur u,Service s WHERE (a.id=s.agence.id)AND(u.service.id=s.id)AND(u.id=:userId)"),
+})
 public class Agence implements Serializable {
 
     private static final long serialVersionUID = 1L;

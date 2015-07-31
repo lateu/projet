@@ -5,10 +5,12 @@
 package com.lateu.projet.afriland.metierImpl;
 
 import com.douwe.generic.dao.DataAccessException;
+import com.lateu.projet.afriland.dao.Agencedao;
 import com.lateu.projet.afriland.dao.Archivagedao;
 import com.lateu.projet.afriland.dao.Mouvementdao;
 import com.lateu.projet.afriland.dao.Servicedao;
 import com.lateu.projet.afriland.dao.Userdao;
+import com.lateu.projet.afriland.entities.Agence;
 import com.lateu.projet.afriland.entities.Archivage;
 import com.lateu.projet.afriland.entities.Mouvement;
 import com.lateu.projet.afriland.entities.Service;
@@ -31,6 +33,7 @@ public class ServiceMouvementImpl implements ServiceMouvement {
     private Archivagedao archivagedao;
     private Servicedao servicedao;
     private Userdao userdao;
+    private Agencedao agencedao;
 
     @Override
     public void create(String archive, String service, Long idUser) {
@@ -38,8 +41,8 @@ public class ServiceMouvementImpl implements ServiceMouvement {
             Service s = new Service();
          
             Mouvement m = new Mouvement();
-
-            s = servicedao.findbyNom(service);
+            Agence ag=agencedao.findByUserId(idUser);
+            s = servicedao.findbyNom(service,ag.getCode());
            Archivage a  = archivagedao.findByAccount(archive);
             Utilisateur U = userdao.findById(idUser);
             m.setArchive(a);
@@ -102,5 +105,13 @@ public class ServiceMouvementImpl implements ServiceMouvement {
         } catch (DataAccessException ex) {
             Logger.getLogger(ServiceMouvementImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Agencedao getAgencedao() {
+        return agencedao;
+    }
+
+    public void setAgencedao(Agencedao agencedao) {
+        this.agencedao = agencedao;
     }
 }

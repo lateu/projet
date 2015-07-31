@@ -5,10 +5,12 @@
 package com.lateu.projet.afriland.metierImpl;
 
 import com.douwe.generic.dao.DataAccessException;
+import com.lateu.projet.afriland.dao.Agencedao;
 import com.lateu.projet.afriland.dao.Autoritedao;
 import com.lateu.projet.afriland.dao.Poubelledao;
 import com.lateu.projet.afriland.dao.Servicedao;
 import com.lateu.projet.afriland.dao.Userdao;
+import com.lateu.projet.afriland.entities.Agence;
 import com.lateu.projet.afriland.entities.Poubelle;
 import com.lateu.projet.afriland.entities.Service;
 import com.lateu.projet.afriland.entities.UserAutority;
@@ -30,6 +32,8 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
     private Autoritedao autoritedao;
     private Poubelledao poubelledao;
     private Servicedao servicedao;
+    private Agencedao agencedao;
+ 
 
     @Override
     public Utilisateur findByUsername(String usename) {
@@ -61,12 +65,12 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
     }
 
     @Override
-    public void create(Utilisateur utilisateur, String autority, String nomService) {
+    public void create(Utilisateur utilisateur, String autority, String nomService,String codeAgence) {
         try {
             UserAutority userAutorite = new UserAutority();
             userAutorite.setAutorite(autority);
             userAutorite.setUtilisateur(utilisateur);
-            utilisateur.setService(servicedao.findbyNom(nomService));
+            utilisateur.setService(servicedao.findbyNom(nomService,codeAgence));
             userdao.create(utilisateur);
             autoritedao.create(userAutorite);
 
@@ -101,7 +105,8 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
             //      }
             //          
             if (nomService.equals("choisir") == false) {
-                s = servicedao.findbyNom(nomService);
+               Agence  ag=agencedao.findByUsername(u.getUsername());
+                s = servicedao.findbyNom(nomService,ag.getCode());
             } else {
                 s = servicedao.findById(old.getService().getId());
 
@@ -238,5 +243,13 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         } catch (DataAccessException ex) {
             Logger.getLogger(ServicePoubelleImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Agencedao getAgencedao() {
+        return agencedao;
+    }
+
+    public void setAgencedao(Agencedao agencedao) {
+        this.agencedao = agencedao;
     }
 }

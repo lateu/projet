@@ -14,4 +14,5 @@ import com.lateu.projet.afriland.entities.Agence;
 public interface Agencedao  extends IDao<Agence, Long>{
     public Agence findByCode(String code);
     public Agence findByUsername(String username);
+        public Agence findByUserId(Long userId);
 }

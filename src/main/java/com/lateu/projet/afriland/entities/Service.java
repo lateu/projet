@@ -27,7 +27,7 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "Service.findById", query = "SELECT s FROM Service s WHERE s.id = :id"),
     @NamedQuery(name = "Service.findByCodeAgence", query = "SELECT s FROM Service s WHERE s.agence.Code=:codeAgence"),
     @NamedQuery(name = "Service.findByAgence", query = "SELECT s FROM Service s WHERE s.agence.Code=:codeAgence"),
-    @NamedQuery(name = "Service.findByNom", query = "SELECT s FROM Service s WHERE s.nom = :nom")})
+    @NamedQuery(name = "Service.findByNom", query = "SELECT s FROM Service s, Agence a WHERE (s.nom = :nom)AND(s.agence.Code=:codeAgence)")})
 public class Service implements Serializable {
 
     private static final long serialVersionUID = 1L;

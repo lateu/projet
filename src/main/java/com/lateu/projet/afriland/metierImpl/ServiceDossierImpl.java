@@ -55,11 +55,11 @@ public class ServiceDossierImpl implements ServiceDossier {
     public void create(DossierCreationCompte d, Agence a) {
         try {
             d.setAgence(a);
-            d.setPas5("En cours");
-            d.setPas1("0");
+            d.setPas1("En cours");
             d.setPas2("0");
             d.setPas3("0");
             d.setPas4("0");
+            d.setPas5("0");
             dossierdao.create(d);
             //  System.out.println("=ok");
 
@@ -75,22 +75,22 @@ public class ServiceDossierImpl implements ServiceDossier {
         Archivage archivage = new Archivage();
 
         if ((r.getAutorite()).equals("ROLE_CA") == true) {
-            d.setPas1("ok");
-            dossierdao.update(d);
-        }
-
-        if ((r.getAutorite()).equals("ROLE_JR") == true) {
             d.setPas2("ok");
             dossierdao.update(d);
         }
 
-        if ((r.getAutorite()).equals("ROLE_INF") == true) {
+        if ((r.getAutorite()).equals("ROLE_JR") == true) {
             d.setPas3("ok");
             dossierdao.update(d);
         }
 
-        if ((r.getAutorite()).equals("ROLE_AR") == true) {
+        if ((r.getAutorite()).equals("ROLE_INF") == true) {
             d.setPas4("ok");
+            dossierdao.update(d);
+        }
+
+        if ((r.getAutorite()).equals("ROLE_AR") == true) {
+            d.setPas5("ok");
             dossierdao.update(d);
             archivage.setClient(d.getClient());
             archivage.setCompte(d.getCompte());
@@ -119,24 +119,24 @@ public class ServiceDossierImpl implements ServiceDossier {
     }
 
     @Override
-    public List<DossierCreationCompte> findForCA() {
-        return dossierdao.findForCA();
+    public List<DossierCreationCompte> findForCA(String codeAgence) {
+        return dossierdao.findForCA(codeAgence);
     }
 
     @Override
-    public List<DossierCreationCompte> findForCJ() {
-        return dossierdao.findForJR();
+    public List<DossierCreationCompte> findForCJ(String codeAgence) {
+        return dossierdao.findForJR(codeAgence);
     }
 
     @Override
-    public List<DossierCreationCompte> findForINF() {
-        return dossierdao.findForINF();
+    public List<DossierCreationCompte> findForINF(String codeAgence) {
+        return dossierdao.findForINF(codeAgence);
 
     }
 
     @Override
-    public List<DossierCreationCompte> findAR() {
-        return dossierdao.findForAR();
+    public List<DossierCreationCompte> findAR(String codeAgence) {
+        return dossierdao.findForAR(codeAgence);
     }
 
     public Archivagedao getArchivagedao() {

@@ -19,10 +19,11 @@ import java.util.logging.Logger;
 public class ServicedaoImpl extends GenericDao<Service, Long> implements Servicedao {
 
     @Override
-    public Service findbyNom(String s) {
+    public Service findbyNom(String s,String c) {
         try {
             return (Service) getManager().createNamedQuery("Service.findByNom")
                     .setParameter("nom", s)
+                    .setParameter("codeAgence", c)
                     .getSingleResult();
         } catch (DataAccessException ex) {
             Logger.getLogger(ServicedaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -31,11 +32,12 @@ public class ServicedaoImpl extends GenericDao<Service, Long> implements Service
     }
 
     @Override
-    public List<Service> TestService(String s) {
+    public List<Service> TestService(String s, String c) {
         try {
-            return  getManager().createNamedQuery("Service.findByNom")
-                             .setParameter("nom", s)
-                             .getResultList();
+            return getManager().createNamedQuery("Service.findByNom")
+                    .setParameter("nom", s)
+                    .setParameter("codeAgence", c)
+                    .getResultList();
         } catch (DataAccessException ex) {
             Logger.getLogger(ServicedaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -45,9 +47,9 @@ public class ServicedaoImpl extends GenericDao<Service, Long> implements Service
     @Override
     public List<Service> findServiceByAgence(String agence) {
         try {
-            return  getManager().createNamedQuery("Service.findByAgence")
-                                      .setParameter("codeAgence", agence)
-                                      .getResultList();
+            return getManager().createNamedQuery("Service.findByAgence")
+                    .setParameter("codeAgence", agence)
+                    .getResultList();
         } catch (DataAccessException ex) {
             Logger.getLogger(ServicedaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

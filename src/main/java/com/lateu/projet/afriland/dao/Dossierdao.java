@@ -18,15 +18,15 @@ public interface Dossierdao extends IDao<DossierCreationCompte, Long> {
 
     public List<DossierCreationCompte> findForAccueil();
 
-    public List<DossierCreationCompte> findForCA();
+    public List<DossierCreationCompte> findForCA(String codeAgence);
 
     public List<DossierCreationCompte> findForALL();
 
-    public List<DossierCreationCompte> findForJR();
+    public List<DossierCreationCompte> findForJR(String codeAgence);
 
-    public List<DossierCreationCompte> findForINF();
+    public List<DossierCreationCompte> findForINF(String codeAgence);
 
-    public List<DossierCreationCompte> findForAR();
+    public List<DossierCreationCompte> findForAR(String codeAgence);
 
     public List<DossierCreationCompte> findByPeriode(Date debut, Date fin);
 
