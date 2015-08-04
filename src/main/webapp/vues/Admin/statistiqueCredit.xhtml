@@ -4,10 +4,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="Template.xhtml">
+    <ui:composition template="/vues/templates/AdminTemplate.xhtml">
        
         <ui:define name="body">
-            <p:panel style="margin-top: 3%; margin-left: 30%;margin-right: 35%" >
+            <p:panel style="margin-top: 3%; margin-left: 30%;margin-right: 35%" header="Credit-Scolaire>statistiques graphiques" >
             <p:pieChart id="custom" value="#{statCreditbean.pieModel}" legendPosition="e" fill="false" showDataLabels="true"  
                         title="Statistiques graphiques sur le credit scolaire" style="width:400px;height:350px;" sliceMargin="5" diameter="150" />  
 </p:panel>

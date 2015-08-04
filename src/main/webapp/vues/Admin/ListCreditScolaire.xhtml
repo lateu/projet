@@ -8,14 +8,14 @@
 
     <h:form id="CreditScolaireListForm">
 
-        <p:panel header="liste des demande de credit" style="margin-left: 5%;margin-right: 5%; margin-top: 2%">
+        <p:panel header="credit-Scolaire>liste" style="margin-left: 5%;margin-right: 5%; margin-top: 2%">
 
             <p:dataTable id="datalist" value="#{creditScolairebean.creditScolaires}" var="item"
                          selectionMode="single" selection="#{creditScolairebean.creditScolaireSelect }"
                          rowKey="#{item.id}"
                          paginator="true"
                          rows="15"
-                         rowsPerPageTemplate="15,20,30"
+                         rowsPerPageTemplate="5,10,15"
                          >
 
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>

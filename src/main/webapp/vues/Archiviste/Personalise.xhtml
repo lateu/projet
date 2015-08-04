@@ -5,13 +5,13 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="Template.xhtml">
+    <ui:composition template="/vues/templates/ArchiveTemplate.xhtml">
 
         <ui:define name="body" >
 
             <h:form id="statForm">
                 <p:growl id="growl" showDetail="true" sticky="true" />
-                <p:panel style="margin-left: 30%;margin-right: 30%; background-color: #ffffff; margin-top: 2%" header="changement de mot de passe">
+                <p:panel style="margin-left: 30%;margin-right: 30%; background-color: #ffffff; margin-top: 2%" header="Options> Personaliser un compte">
                     <p:panelGrid  columns="2">
 
                         <h:outputText value="Mot de passe actuel: " />  

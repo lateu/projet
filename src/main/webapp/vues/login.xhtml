@@ -1,11 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
 
-    <head>
-        <!--       <h:outputStylesheet library="css" name="pfcrud.css"/>
-                -->
+
+
+
+    <h:head>
         <title>connexion</title>
         <style>
             .errorblock {
@@ -16,23 +21,33 @@
                 margin: 16px;
             }
 
-body {
-                background: rgb(174, 188, 191); 
-                background: -moz-linear-gradient(top,  rgba(100,107,240,100) 0%, rgba(225,285,332,100) 100%);
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(130,187,253,100)), color-stop(100%,rgba(225,285,332,100))); 
-                background: -webkit-linear-gradient(top,  rgba(130,187,253,100) 0%,rgba(225,285,332,100) 100%);
-                background: -o-linear-gradient(top,  rgba(130,187,253,1) 0%,rgba(225,285,332,100) 100%); 
-                background: -ms-linear-gradient(top,  rgba(130,187,253,100) 0%,rgba(225,285,332,100) 100%); 
-                min-height: 800px;
-                font-size: small;
-                margin: 0px 80px 0px 80px;
+            body {
+                background: rgb(174, 188, 191); /* Old browsers */
+                background: -moz-linear-gradient(top,  rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+                min-height: 710px;
+           background-image: url("resources/images/font3.jpg");     
+              
             }
+
         </style>
-        
-    </head>
-    <body onload='document.f.j_username.focus();'>
-        <div class="body"></div>
-        <h3 style="margin-left: 43%;margin-right: 40%; margin-top: 15%">  </h3>
+
+    </h:head>
+    <h:body onload='document.f.j_username.focus();' >
+
+        <h3 style="margin-left: 80%;margin-right: 2%; margin-top: 1%;height:50px ;border-radius: 15px;">
+            <h:form>     
+                <h:commandLink value="connexion" action="#" ></h:commandLink>  
+                   
+            </h:form> 
+            
+            
+        </h3>
 
         <c:if test="${not empty error}">
             <div class="errorblock" style="margin-left: 35%;margin-right: 30%;">
@@ -40,38 +55,53 @@ body {
                 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
             </div>
         </c:if>
-
+       
         <form name='f' action="j_spring_security_check" method='POST' id="form1">
-           
+      
 
-            <table style="margin-left: 40%;margin-right: 35%; background-color: #ffEEEE;">
-                
-                
+            <table style="margin-left: 40%;margin-right: 35%; background-color: #036fab;margin-top: 3%">
+
                 <tr>
-                    <td colspan="2"> <img src="resources/images/logo.PNG" alt="rien" width="100%" height="75" style="border-radius: 15%;"/></td>
-                </tr>
-                
-                
-                <tr>
-                    <td>login:</td>
+                    <td style="font-size: 18px">login:</td>
                     <td><input type='text' name='j_username' value=''/>
                     </td>
                 </tr>
                 <tr>
-                    <td>Password:</td>
+                    <td >&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="font-size: 18px">Password:</td>
                     <td><input type='password' name='j_password' />
                     </td>
                 </tr>
-               
+                <tr>
+                    <td >&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
                 <tr>
                     <td ></td ><td ><input name="submit" type="submit" value="connexion >>" /><input name="reset" type="reset" value="annuler" />
 
                     </td>
                 </tr>
 
+                <tr>
+                    <td ></td ><td >
+
+                    </td>
+                </tr>
+
             </table>
-            </form>
-      
-    </body>
+
+
+        </form>
+        <div style="margin-left: 40%;margin-right: 20%;margin-top: 5%">
+            <h:form>     
+                <p:galleria value="#{gallerieBean.images}" var="image" panelWidth="300" panelHeight="150" showCaption="true">  
+                    <p:graphicImage value="resources/images/gallerie/#{image}" alt="Image Description for #{image}" title="#{image}"/>  
+                </p:galleria> 
+            </h:form> 
+        </div>
+    </h:body>
 </html>
 

@@ -8,14 +8,14 @@
 
     <h:form id="AgenceListForm">
 
-        <p:panel header="liste des agences" style="margin-left: 30%;margin-right: 30%;margin-top: 1%">
+        <p:panel header="Agence>liste" style="margin-left: 30%;margin-right: 30%;margin-top: 1%">
 
             <p:dataTable id="datalist" value="#{agencebean.agences}" var="item"
                          selectionMode="single" selection="#{agencebean.agenceSelect}"
                          rowKey="#{item.id}"
                          paginator="true"
                          rows="10"
-                         rowsPerPageTemplate="10,20,30"
+                         rowsPerPageTemplate="5,10,15"
                          >
 
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>

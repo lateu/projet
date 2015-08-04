@@ -8,10 +8,10 @@
 
 
 
-        <ui:composition template="Template.xhtml">
+        <ui:composition template="/vues/templates/ArchiveTemplate.xhtml">
             <ui:define name="body" >
 
-                <p:panel style="margin-left: 20%;margin-right: 20%;margin-top: 2%" header="operations effectuées sur un dossier juridique">
+                <p:panel style="margin-left: 20%;margin-right: 20%;margin-top: 2%" header="Operations>Liste">
                     <h:form >  
                         <p:dataTable var="car" value="#{dossierCreatinbean.controls}" 
                                       paginator="true"

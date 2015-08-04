@@ -52,10 +52,9 @@ public class LoginController implements Serializable{
         } else if (client.getAutorite().equals("ROLE_INF")) {
             return "vues/DossierCreation/index";
         } else if (client.getAutorite().equals("ROLE_AR")) {
-           
             return "vues/Archiviste/index";
         } else if (client.getAutorite().equals("ROLE_CDS")) {
-            return "vues/CreditScolaire/Dossier/index";
+            return "vues/CreditScolaire/index";
         } else if(client.getAutorite().equals("ROLE_CONS")){
             return "vues/Accueil/Accueil";
         }else if(client.getAutorite().equals("ROLE_CDP")){

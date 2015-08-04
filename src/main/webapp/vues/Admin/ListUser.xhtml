@@ -8,14 +8,14 @@
 
     <h:form id="UtilisateurListForm">
 
-        <p:panel header="liste des utilisateurs" style="margin-left: 10%;margin-right: 10%;margin-top: 2%">
+        <p:panel header="Utilisateurs>Liste" style="margin-left: 10%;margin-right: 10%;margin-top: 2%">
 
             <p:dataTable id="datalist" value="#{utilisateurbean.utilisateurs}" var="item"
                          selectionMode="single" selection="#{utilisateurbean.utilisateurSelect}"
                          rowKey="#{item.id}"
                          paginator="true"
                          rows="15"
-                         rowsPerPageTemplate="15,20,30"
+                         rowsPerPageTemplate="5,10,15"
                          >
 
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>

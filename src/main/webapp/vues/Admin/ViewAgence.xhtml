@@ -8,11 +8,11 @@
 
     <ui:composition>
 
-        <p:dialog id="AgenceViewDlg" widgetVar="AgenceViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewAgenceTitle}">
+        <p:dialog id="AgenceViewDlg" widgetVar="AgenceViewDialog" modal="true" resizable="false" appendToBody="true" header="Agence>Informationd">
 
             <h:form id="AgenceViewForm">
 
-                <h:panelGroup id="display">
+                <h:panelGroup id="display" >
                     <p:panelGrid columns="2" rendered="#{agencebean.agenceSelect != null}">
 
                         <h:outputText value="code"/>

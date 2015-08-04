@@ -8,14 +8,14 @@
 
     <h:form id="ServiceListForm">
 
-        <p:panel header="liste des services" style="margin-left: 25%;margin-right: 25%; margin-top: 2%">
+        <p:panel header="Services>Liste" style="margin-left: 25%;margin-right: 25%; margin-top: 2%">
 
             <p:dataTable id="datalist" value="#{servicebean.services}" var="item"
                          selectionMode="single" selection="#{servicebean.serviceselect}"
                          rowKey="#{item.id}"
                          paginator="true"
                          rows="15"
-                         rowsPerPageTemplate="15,20,30"
+                         rowsPerPageTemplate="5,10,15"
                          >
 
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>

@@ -15,24 +15,23 @@
                     <td width="65%">
                         <h:form id="menuForm">
                             <p:menubar style="height: 22px; margin-left: 25%;margin-right: 25%; border-radius: 20px;font-size: 19px">  
-                                <p:menuitem value="#{msg['nouveauDossier']}" url="/vues/CreditScolaire/Dossier/indexCreditScolaire.xhtml" style="font-size: 18px"/> 
+                                <p:menuitem value="#{msg['nouveauDossier']}" url="/vues/CreditScolaire/indexCreditScolaire.xhtml" style="font-size: 18px"/> 
 
 
                                 <p:submenu   label="#{msg.stat}" >  
-                                    <p:menuitem value="#{msg.statGraphique}" url="/vues/CreditScolaire/Dossier/statistiqueCredit.xhtml"  style="font-size: 18px"/> 
+                                    <p:menuitem value="#{msg.statGraphique}" url="/vues/CreditScolaire/statistiqueCredit.xhtml"  style="font-size: 18px"/> 
 
-                                    <p:menuitem value="Numerique" url="/vues/CreditScolaire/Dossier/rapportCreditScolaire.xhtml" style="font-size: 18px" /> 
+                                    <p:menuitem value="Numerique" url="/vues/CreditScolaire/rapportCreditScolaire.xhtml" style="font-size: 18px" /> 
 
-                                    <p:menuitem value="Liste" url="/vues/CreditScolaire/Dossier/ListeCreditScolaire.xhtml" style="font-size: 18px" /> 
+                                    <p:menuitem value="Liste" url="/vues/CreditScolaire/ListeCreditScolaire.xhtml" style="font-size: 18px" /> 
                                 </p:submenu> 
 
 
-                                <p:menuitem value="corbeille" url="/vues/CreditScolaire/Dossier/poubelle.xhtml"  style="font-size: 18px"/> 
+                                <p:menuitem value="corbeille" url="/vues/CreditScolaire/poubelle.xhtml"  style="font-size: 18px"/> 
 
                                 <p:submenu   label="Options" icon="ui-icon-wrench" >  
                                     <p:menuitem  value="#{msg['welcome.depart']}" url="/j_spring_security_logout" style=" font-size: 15px;" icon="ui-icon-close"/>
-                                    <p:menuitem  value="InitCompte" url="/vues/CreditScolaire/Dossier/InitPassword.xhtml"  icon="ui-icon-refresh" />
-                                    <p:menuitem  value="Personnalise" url="/vues/CreditScolaire/Dossier/Personalise.xhtml" style=" font-size: 15px;" icon="ui-icon-newwin"/>
+                                    <p:menuitem  value="Personnalise" url="/vues/CreditScolaire/Personalise.xhtml" style=" font-size: 15px;" icon="ui-icon-newwin"/>
                                 </p:submenu> 
                             </p:menubar>  
 
