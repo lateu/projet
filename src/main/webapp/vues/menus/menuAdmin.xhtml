@@ -11,12 +11,12 @@
 
 
                 <tr>
-                    <td width="15%">
+                    <td width="10%">
                         <p:graphicImage value="/resources/images/mcd.PNG"   style="width:200px;height: 80px;"/>
                     </td>
-                    <td width="65%">
+                    <td width="60%">
                         <h:form id="menuForm">
-                            <p:menubar style="height: 25px; margin-left: 1%;margin-right: 1%; border-radius: 20px;font-size: 120px">  
+                            <p:menubar style="height: 25px;border-radius: 20px;font-size: 120px">  
                                 <p:submenu   label="#{msg['utilisateur']}" > 
                                     <p:menuitem value="#{msg['nouveau']}" url="/vues/Admin/indexUser.xhtml" style="font-size: 18px"/> 
                                 </p:submenu>
@@ -77,13 +77,13 @@
 
                         </h:form>
                     </td>
-                    <td width="20%">
+                    <td width="15%">
                         <h:form id="formulaire">
-                            <h:panelGrid columns="3" style="height: 50px; margin-left: 60%;  " >
+                            <h:panelGrid columns="3" style="height: 50px; margin-left:40%;  " >
                                 <h:commandButton value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" image="/resources/images/fr.png"  style="font-size: 15px"/>
                                 <h:commandButton value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" image="/resources/images/en.png"  style="font-size: 15px"/> 
                             </h:panelGrid>
-                            <h:outputLabel value="#{msg['connecte']}:   #{loginController.conncte}"  style="margin-left: 40%;margin-right: 5%;font-weight: bold"/>  
+                            <h:outputLabel value="#{msg['connecte']}:   #{loginController.conncte}"  style="margin-left: 20%;margin-right: 5%;font-weight: bold"/>  
                         </h:form>
 
                     </td>

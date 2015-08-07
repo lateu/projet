@@ -14,7 +14,7 @@
 
                     <td width="65%">
                         <h:form id="menuForm">
-                            <p:menubar style="height: 22px; margin-left: 25%;margin-right: 25%; border-radius: 20px;font-size: 19px">  
+                            <p:menubar style="height: 22px; margin-left: 20%;margin-right: 20%; border-radius: 20px;font-size: 19px">  
                                 <p:menuitem value="#{msg['nouveauDossier']}" url="/vues/CreditScolaire/indexCreditScolaire.xhtml" style="font-size: 18px"/> 
 
 
@@ -39,12 +39,12 @@
                     </td>
                     <td width="25%">
                         <h:form id="formulaire">
-                            <h:panelGrid columns="3" style="height: 55px; margin-left: 2%;  " >
+                            <h:panelGrid columns="3" style="height: 55px; margin-left: 35%;  " >
                                 <h:commandButton value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}" image="/resources/images/fr.png"  style="font-size: 15px"/>
                                 <h:commandButton value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}" image="/resources/images/en.png"  style="font-size: 15px"/> 
                             </h:panelGrid>
 
-                            <h:outputLabel value="connecté:   #{loginController.conncte}"  style="margin-left: 55%;margin-right: 5%;font-weight: bold"/>  
+                            <h:outputLabel value="connecté:   #{loginController.conncte}"  style="margin-left: 30%;margin-right: 5%;font-weight: bold"/>  
 
 
                         </h:form>
